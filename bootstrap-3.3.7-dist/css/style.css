@@ -1,0 +1,14 @@
+
+/* */
+.container {
+color:#ff0000;
+height: 44px;
+text-align: center;
+}
+
+a:not(.btn), a:link:not(.btn) {
+  color: #666666;
+}
+a:visited:not(.btn) {
+  color: #999999;
+}
