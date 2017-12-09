@@ -78,12 +78,12 @@ window.onload = function(){
         }
     };
 
-    const Transmit = { template: `
+    const Choice = { template: `
 <div>
     <form style="margin-top:100px; margin-bottom:75px;">
       <div class="form-group">
         <label for="exampleFormControlSelect1">降りる駅</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="exampleFormControlSelect1" v-model="station">
               <option>秋葉原</option>
               <option>神田</option>
               <option>東京</option>
@@ -93,18 +93,27 @@ window.onload = function(){
       </div>
       <div class="form-group">
         <label for="exampleFormControlTextarea1">私のヒント</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" v-model="hint"></textarea>
       </div>
-      <!--
-      <button type="submit" class="btn btn-default">Submit</button>
-      -->
     </form>
     <!-- button -->
     <div class="buttonzone">
-      <router-link to="/train"><img src="image/transmit.png" alt="stop" class="sbutton"></router-link>
+      <img src="image/transmit.png" alt="stop" class="sbutton" v-on:click="printFormData">
     </div>
 </div>
-    ` };
+    `,
+        data: function () {
+            return {
+                station: "",
+                hint: ""
+            }
+        },
+    methods: {
+        printFormData: function () {
+            console.log(this.station + this.hint)
+        }
+    }
+    };
 
     const Index = { template: `
 <div>
@@ -124,7 +133,7 @@ window.onload = function(){
 </div>
     `};
 
-    const Choice = { template: `
+    const Transmit = { template: `
     <div>
         <p>ここにコンテンツがはいります</p>
 
