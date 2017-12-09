@@ -8,16 +8,34 @@
     <script type="text/javascript" src="js/quiet.js"></script>
     <script type="text/javascript" src="js/receivetext.js"></script>
     <script async type="text/javascript" src="js/quiet-emscripten.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
   </head>
   <body>
-    <div class="hidden" data-quiet-profile-name="ultrasonic_19200"></div>
-    <div class="wrapper">
       <header>
         <h1>Receive Text</h1>
       </header>
       <section>
-      <div class="hidden" data-quiet-warning></div>
-      <pre data-quiet-receive-text-target>Your received text will show up here. Waiting...</pre>
+        <div class="form-group" data-quiet-profile-name="ultrasonic_19200" data-quiet-receive-text>
+          <div class="alert alert-danger hidden" data-quiet-receive-text-warning></div>
+          <pre data-quiet-receive-text-target class="hidden">Your received @19200 text will show up here. Waiting...</pre>
+          <button type="button" class="btn btn-default" style="width:100%" data-quiet-receive-text-button data-quiet-receiving-text="Listening...">Start Audible Receiver</button>
+        </div>
+        <div class="form-group" data-quiet-profile-name="ultrasonic-19400" data-quiet-receive-text>
+          <div class="alert alert-danger hidden" data-quiet-receive-text-warning></div>
+          <pre data-quiet-receive-text-target class="hidden">Your received @19400 text will show up here. Waiting...</pre>
+          <button type="button" class="btn btn-default" style="width:100%" data-quiet-receive-text-button data-quiet-receiving-text="Listening...">Start Ultrasonic Receiver</button>
+        </div>
+        <div class="form-group" data-quiet-profile-name="ultrasonic-19600" data-quiet-receive-text>
+          <div class="alert alert-danger hidden" data-quiet-receive-text-warning></div>
+          <pre data-quiet-receive-text-target class="hidden">Your received @19600 text will show up here. Waiting...</pre>
+          <button type="button" class="btn btn-default" style="width:100%" data-quiet-receive-text-button data-quiet-receiving-text="Listening...">Start Ultrasonic Receiver</button>
+        </div>
+        <div class="form-group" data-quiet-profile-name="ultrasonic-19800" data-quiet-receive-text>
+          <div class="alert alert-danger hidden" data-quiet-receive-text-warning></div>
+          <pre data-quiet-receive-text-target class="hidden">Your received @19800 text will show up here. Waiting...</pre>
+          <button type="button" class="btn btn-default" style="width:100%" data-quiet-receive-text-button data-quiet-receiving-text="Listening...">Start Ultrasonic Receiver</button>
+        </div>
       </section>
     </div>
   </body>
