@@ -13,7 +13,8 @@ var TextReceiver = (function() {
         if(recvObj.successes < 3){
             recvObj.id = rcvData[0];
             recvObj.station.textContent = rcvData[1];
-            recvObj.hint.textContent = rcvData[2];
+            var rcvDataEnd = rcvData[2].split(";",1);
+            recvObj.hint.textContent = rcvDataEnd[0];
             recvObj.successes++;
         }else{
           if(recvObj.id != rcvData[0]){
