@@ -32,6 +32,8 @@ var TextTransmitter = (function() {
             onTransmitFinish();
             return;
         }
+        var id = new Date().getTime().toString(16);
+        console.log(id);
         console.log("111111111");
         send_continue_flag = true;
         transmitAction(payload);
@@ -83,7 +85,7 @@ var TextTransmitter = (function() {
     };
 
     function onDOMLoad() {
-      console.log("commit 1:14");
+      console.log("commit 2:08");
         btn = document.querySelector('[data-quiet-send-button]');
         stp_btn = document.querySelector('[data-quiet-send-stop-button]');
         textbox = document.querySelector('[data-quiet-text-input]');
