@@ -103,7 +103,7 @@ var TextTransmitter = (function() {
     };
 
     function onDOMLoad() {
-      console.log("commit 2:57");
+      console.log("commit 3:00");
         btn = document.querySelector('[data-quiet-send-button]');
         stp_btn = document.querySelector('[data-quiet-send-stop-button]');
         selectbox = document.querySelector('[data-quiet-select-input]');
