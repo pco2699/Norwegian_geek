@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,39 +9,27 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- 固定footerCSSの読み込み -->
     <link href="css/stick-footer.css" rel="stylesheet">
-    <!-- CSSの読み込み -->
-    <link href="css/style.css" rel="stylesheet">
     <!-- jQuery読み込み -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- BootstrapのJS読み込み -->
     <script src="js/bootstrap.min.js"></script>
-  </head>
-  <body class="body">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+    <script src="js/index.js"></script>
 
+    <link rel="stylesheet/less" type="text/css" href="css/train.less">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.2.0/less.min.js"></script>
+</head>
+<body class="body">
+<div id="app">
     <!-- navbar -->
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">LOGO</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span></a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <navbar-header></navbar-header>
+
+    <router-view></router-view>
 
     <!-- choice button-->
-    <section class="choice">
-      <div class="post">
-        <a href="train.html"><img src="image/post.png" alt="post" class="button01"></p></a>
-      </div>
-      <div class="getpost">
-        <a href="train.html"><img src="image/getpost.png" alt="getpost" class="button02"></p></a>
-      </div>
-    </section>
 
-  </body>
+</div>
+
+</body>
 </html>

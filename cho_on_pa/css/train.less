@@ -1,0 +1,256 @@
+.header {
+  height: 57px;
+  background-color: #f5f5f5;
+  max-width: 360px;
+}
+
+.title {
+  text-align: center;
+  padding: 18px;
+  font-size: 17px;
+  color: #696969;
+}
+
+.body {
+  max-width: 360px;
+  max-height: 640px;
+  background-color: white;
+}
+
+/* 駅名のCSS*/
+@-webkit-keyframes test {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(0);
+  }
+  100% {
+    opacity: 0.1;
+    -webkit-transform: scale(1);
+  }
+}
+
+.header {
+  height: 57px;
+  background-color: #f5f5f5;
+  max-width: 360px;
+}
+
+.navbar {
+  background-color: #f5f5f5;
+  font-size: 17px;
+}
+
+.title {
+  color: #696969;
+  font-size: 17px;
+}
+
+.body {
+  max-width: 360px;
+  max-height: 640px;
+  background-color: white;
+}
+
+/* buttons */
+img.button01 {
+  width: 118px;
+  margin-top: 174px;
+  margin-left: 38px;
+  float: left;
+}
+
+img.button02 {
+  width: 118px;
+  margin-top: 174px;
+  margin-right: 38px;
+  float: right;
+}
+
+.collapse {
+  display: block;
+  border-color: transparent;
+}
+
+/* navbar-leftの場合はここをleftに変える */
+.navbar-right {
+  float: right;
+}
+
+.navbar-header {
+  float: left;
+}
+
+.navbar-nav {
+  margin: 0 -15px 0 0;
+  li {
+    float: left;
+    a {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+  }
+}
+
+.wrapper(@top, @left, @width, @height) {
+  position: absolute;
+  top: @top;
+  left: @left;
+  width: @width;
+  height: @height;
+}
+
+.circle (@delay, @color) {
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  border: solid 1px @color;
+  position: absolute;
+
+  -webkit-animation-name: test;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-delay: @delay;
+
+  top: 0;
+  left: 0;
+  z-index: -100;
+}
+
+.moji (@color) {
+  position: absolute;
+
+  top: 65px;
+  left: 53px;
+  z-index: 100;
+
+  color: @color;
+}
+
+/* station01 */
+.wrapper1 {
+  .wrapper(120px, 210px, 150px, 150px);
+}
+
+@blue: #52BFCD;
+
+.circle11 {
+  .circle(0, @blue);
+}
+
+.circle21 {
+  .circle(0.1s, @blue);
+}
+
+.circle31 {
+  .circle(0.2s, @blue);
+}
+
+.moji1 {
+  .moji(@blue);
+}
+
+/* station02 */
+.wrapper2 {
+  .wrapper(200px, 40px, 150px, 150px);
+}
+
+.circle12 {
+  .circle(0, #E84351);
+}
+
+.circle22 {
+  .circle(0.1s, #E84351);
+}
+
+.circle32 {
+  .circle(0.2s, #E84351);
+}
+
+.moji2 {
+  .moji(#E84351);
+}
+
+/* station03 */
+.wrapper3 {
+  .wrapper(290px, 180px, 150px, 150px);
+}
+
+.circle13 {
+  .circle(0, #FED849);
+}
+
+.circle23 {
+  .circle(0.1s, #FED849);
+}
+
+.circle33 {
+  .circle(0.2s, #FED849);
+}
+
+.moji3 {
+  .moji(#FED849);
+}
+
+/* station04 */
+.wrapper4 {
+  .wrapper(420px, 125px, 150px, 150px);
+}
+
+@yellow: #C3D957;
+.circle14 {
+  .circle(0, @yellow);
+}
+
+.circle24 {
+  .circle(0.1s, @yellow);
+}
+
+.circle34 {
+  .circle(0.2s, @yellow);
+}
+
+.moji4 {
+  .moji(@yellow);
+}
+
+.header {
+  height: 57px;
+  background-color: #f5f5f5;
+  max-width: 360px;
+}
+
+.navbar {
+  background-color: #f5f5f5;
+  font-size: 17px;
+}
+
+.title {
+  color: #696969;
+  font-size: 17px;
+}
+
+.body {
+  max-width: 360px;
+  max-height: 640px;
+  background-color: white;
+}
+
+.buttonzone {
+  width: 360px;
+  height: 200px;
+  position: relative;
+  margin-top: 320px;
+  border: 1px solid #888;
+}
+
+/* buttons */
+img.tbutton {
+  width: 118px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
