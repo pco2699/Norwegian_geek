@@ -1,17 +1,10 @@
 window.onload = function(){
     let send_continue_flag = false;
-
-    /*Quiet.jsの初期化*/
-    Quiet.init({
-        profilesPrefix: "/Norwegian_geek/cho_on_pa/js/",
-        memoryInitializerPrefix: "/Norwegian_geek/cho_on_pa/js/",
-        libfecPrefix: "/Norwegian_geek/cho_on_pa/js/"
-    });
-    Quiet.addReadyCallback(onQuietReady, onQuietFail);
+    let transmit;
 
     function onQuietReady() {
         let profilename = 'ultrasonic_19600';
-        const transmit = Quiet.transmitter({profile: profilename, onFinish: onTransmitFinish});
+        transmit = Quiet.transmitter({profile: profilename, onFinish: onTransmitFinish});
     };
 
     function sendStart(hint, station) {
@@ -209,7 +202,7 @@ window.onload = function(){
 };
 
     const routes = [
-        { path: '/', component: Index},
+     /*   { path: '/', component: Index}, */
         { path: '/train', component: Train },
         { path: '/transmit', component: Transmit },
         { path: '/choice', component: Choice }
@@ -221,6 +214,15 @@ window.onload = function(){
     const app = new Vue({
         router
     }).$mount('#app');
+
+    Quiet.addReadyCallback(onQuietReady, onQuietFail);
+
+    /*Quiet.jsの初期化*/
+    Quiet.init({
+        profilesPrefix: "/Norwegian_geek/cho_on_pa/js/",
+        memoryInitializerPrefix: "/Norwegian_geek/cho_on_pa/js/",
+        libfecPrefix: "/Norwegian_geek/cho_on_pa/js/"
+    });
 
 
 };
