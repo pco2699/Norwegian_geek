@@ -139,7 +139,7 @@ window.onload = function(){
     </div>
     <div>   
         <!-- button -->
-        <router-link to="/train"><img src="image/stop.png" alt="stop" class="sbutton"></router-link>
+        <router-link to="/"><img src="image/stop.png" alt="stop" class="sbutton"></router-link>
     </div>
 </div>
 `
