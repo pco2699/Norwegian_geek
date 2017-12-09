@@ -136,15 +136,15 @@ window.onload = function(){
     `};
 
     const Transmit = { template: `
-    <div>
-        <div class="transmitnow">
-            <p>ここにコンテンツがはいります</p>
-        </div>
-        <!-- button -->
-        <div class="#">
-            <router-link to="/train"><img src="image/stop.png" alt="stop" class="sbutton"></router-link>
-        </div>
+<div>
+    <div class="transmit-content">
+        <circle_org color="#FF426E" top="100px" left="105px" height="150px" width="150px" message=""></circle_org>
     </div>
+    <div>   
+        <!-- button -->
+        <router-link to="/train"><img src="image/stop.png" alt="stop" class="sbutton"></router-link>
+    </div>
+</div>
 `
 };
 
