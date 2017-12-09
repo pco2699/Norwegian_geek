@@ -9,7 +9,7 @@ var TextReceiver = (function() {
     function onReceive(recvPayload, recvObj) {
         var index = Quiet.ab2str(recvPayload).search(".");
         //console.log("index:" + index);
-        if(index <＝ 0){
+        if(index === 0){
             recvObj.content = recvPayload;
             var rcvStr = Quiet.ab2str(recvObj.content);
             var rcvData = rcvStr.split(",",3);
