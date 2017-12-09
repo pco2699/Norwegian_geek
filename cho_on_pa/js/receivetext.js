@@ -10,7 +10,7 @@ var TextReceiver = (function() {
         if(recvPayload != recvObj.recent){
           recvObj.recent = recvPayload;
           recvObj.content = Quiet.mergeab(recvObj.content, recvPayload);
-          recvObj.target.textContent = recvObj.target.textContent + Quiet.ab2str(recvObj.content);
+          recvObj.target.textContent = Quiet.ab2str(recvObj.content);
         }
         recvObj.successes++;
         var total = recvObj.failures + recvObj.successes
@@ -59,7 +59,7 @@ var TextReceiver = (function() {
             successes: 0,
             failures: 0,
             content: new ArrayBuffer(0),
-            recent: new ArrayBuffer()
+            recent: new ArrayBuffer(0)
         };
         var onBtnClick = function(e) { return onClick(e, recvObj); };
         recvObj.btn.addEventListener('click', onBtnClick, false);
