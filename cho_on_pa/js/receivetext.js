@@ -11,8 +11,8 @@ var TextReceiver = (function() {
         if(recvObj.content != recvPayload){
             recvObj.content = recvPayload;
             var rcvStr = Quiet.ab2str(recvObj.content);
-            console.log("index:" + rcvStr.search("."));
-            if(rcvStr.search(".") < 0){
+            console.log("index:" + rcvStr.indexOf("."));
+            if(rcvStr.indexOf(".") < 0){
                 buffer = rcvStr;
                 return;
             }else{
