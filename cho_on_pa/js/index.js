@@ -1,4 +1,52 @@
 window.onload = function(){
+    let send_continue_flag = false;
+
+    /*Quiet.jsの初期化*/
+    Quiet.init({
+        profilesPrefix: "./js/",
+        memoryInitializerPrefix: "./js/",
+        libfecPrefix: "./js/"
+    });
+    Quiet.addReadyCallback(onQuietReady, onQuietFail);
+
+    function onQuietReady() {
+        let profilename = 'ultrasonic_19600';
+        transmit = Quiet.transmitter({profile: profilename, onFinish: onTransmitFinish});
+    };
+
+    function sendStart(hint, station) {
+        sendStop();
+        var id = new Date().getTime().toString(16).substr(7, 10) + Math.floor(10*Math.random()).toString(16);
+
+        var payload = id + "," + station + ","+ hint + ".";
+        send_continue_flag = true;
+        transmitAction(payload);
+    };
+
+    function sendStop() {
+        send_continue_flag = false;
+    }
+
+    function transmitAction(payload) {
+        var send_continue = function(){
+            console.log("transmit_now");
+            transmit.transmit(Quiet.str2ab(payload));
+            if(send_continue_flag == false){
+                return;
+            }
+            setTimeout(send_continue, 2000);
+        };
+        send_continue();
+    }
+
+
+    function onTransmitFinish() {
+    };
+
+    function onQuietFail(reason) {
+        console.log("quiet failed to initialize: " + reason);
+    };
+
     /*画面の最大*/
     const MAX_WIDTH = 360;
     const MAX_HEIGHT = 640;
@@ -95,25 +143,34 @@ window.onload = function(){
         <label for="exampleFormControlTextarea1">私のヒント</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" v-model="hint"></textarea>
       </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">周波数帯</label>
+            <select class="form-control" id="exampleFormControlSelect1" v-model="wave">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+      </div>
     </form>
     <!-- button -->
     <div class="#">
-        <router-link to="/train">
-            <img src="image/transmit.png" alt="stop" class="tbutton" v-on:click="printFormData">
+        <router-link to="/transmit">
+            <img src="image/transmit.png" alt="stop" class="tbutton" v-on:click="sendStart">
         </router-link>
     </div>
+    <script 
 </div>
     `,
         data: function () {
             return {
                 station: "",
-                hint: ""
+                hint: "",
+                wave: ""
             }
         },
     methods: {
-        printFormData: function () {
-            console.log(this.station + this.hint)
-        }
+        sendStart: sendStart(this.hint, this.station)
     }
     };
 
