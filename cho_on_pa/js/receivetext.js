@@ -29,7 +29,6 @@ var TextReceiver = (function() {
             recvObj.successes++;
         }else{
             recvObj.successes = 0;
-          }
         }
         //var total = recvObj.failures + recvObj.successes
         //var ratio = recvObj.failures/total * 100;
