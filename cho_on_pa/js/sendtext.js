@@ -5,9 +5,11 @@ var TextTransmitter = (function() {
       libfecPrefix: "/Norwegian_geek/cho_on_pa/js/"
     });
     var btn;
+    var stp_btn;
     var textbox;
     var warningbox;
     var transmit;
+    var send_stop_flag;
 
     function onTransmitFinish() {
         textbox.focus();
@@ -29,15 +31,25 @@ var TextTransmitter = (function() {
             onTransmitFinish();
             return;
         }
-        transmit.transmit(Quiet.str2ab(payload));
-        transmit.transmit(Quiet.str2ab(payload));
-        transmit.transmit(Quiet.str2ab(payload));
+        send_stop_flag = false;
+        while(true){
+          transmit.transmit(Quiet.str2ab(payload));
+          if(send_stop_flag==true){
+            break;
+          }
+        }
     };
+
+    function sendStop() {
+      send_stop_flag = true;
+    }
 
     function onQuietReady() {
         var profilename = document.querySelector('[data-quiet-profile-name]').getAttribute('data-quiet-profile-name');
         transmit = Quiet.transmitter({profile: profilename, onFinish: onTransmitFinish});
         btn.addEventListener('click', onClick, false);
+        stp_btn.addEventListener('click', sendStop, false);
+
     };
 
     function onQuietFail(reason) {
@@ -48,6 +60,7 @@ var TextTransmitter = (function() {
 
     function onDOMLoad() {
         btn = document.querySelector('[data-quiet-send-button]');
+        stp_btn = document.querySelector('[data-quiet-send-stop-button]');
         textbox = document.querySelector('[data-quiet-text-input]');
         warningbox = document.querySelector('[data-quiet-warning]');
         Quiet.addReadyCallback(onQuietReady, onQuietFail);
