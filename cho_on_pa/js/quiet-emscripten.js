@@ -37962,8 +37962,10 @@ var asm = (function(global, env, buffer) {
                 Ql(d, b, 42018, k);
                 break g
               }
-            } elseif ((e | 0) == 46) s = 124;
-          while (0);i: do
+            } else if ((e | 0) == 46)
+              s = 124;
+          while (0);
+          i: do
             if ((s | 0) == 124) {
               e = Ul(b, d) | 0;
               if ((e + -48 | 0) >>> 0 < 10) {
