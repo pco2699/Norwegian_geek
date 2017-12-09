@@ -7,7 +7,7 @@ var TextReceiver = (function() {
     var receivers;
 
     function onReceive(recvPayload, recvObj) {
-        recvObj.content = Quient.mergeab(recvObj.content,recvPayload);
+        recvObj.content = Quiet.mergeab(recvObj.content,recvPayload);
         var rcvStr = Quiet.ab2str(recvObj.content);
         var rcvData = rcvStr.split(",",3);
         if(recvObj.successes < 3){
