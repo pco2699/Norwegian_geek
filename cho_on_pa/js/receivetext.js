@@ -5,21 +5,28 @@ var TextReceiver = (function() {
         libfecPrefix: "/Norwegian_geek/cho_on_pa/js/"
     });
     var receivers;
+    var buffer;
 
     function onReceive(recvPayload, recvObj) {
         if(recvObj.content != recvPayload){
             recvObj.content = recvPayload;
             var rcvStr = Quiet.ab2str(recvObj.content);
-            
-            var rcvData = rcvStr.split(",",3);
-            recvObj.id = rcvData[0];
-            console.log("id:" + rcvData[0]);
+            if(rcvStr.search(".") < 0){
+                buffer = rcvStr;
+                return;
+            }else{
+                buffer += rcvStr;
 
-            recvObj.station.textContent = rcvData[1];
-            console.log("station:" + rcvData[1]);
+                var rcvData = buffer.split(",",3);
+                recvObj.id = rcvData[0];
+                console.log("id:" + rcvData[0]);
 
-            recvObj.hint.textContent = rcvData[2];
-            console.log("hint:" + rcvData[2]);
+                recvObj.station.textContent = rcvData[1];
+                console.log("station:" + rcvData[1]);
+
+                recvObj.hint.textContent = rcvData[2];
+                console.log("hint:" + rcvData[2]);
+            }
         }
         recvObj.successes++;
         //var total = recvObj.failures + recvObj.successes
