@@ -7,8 +7,9 @@ var TextReceiver = (function() {
     var receivers;
 
     function onReceive(recvPayload, recvObj) {
-        if(recvPayload != recvObj.content){
-          recvObj.content = recvPayload;
+        if(recvPayload != recvObj.recent){
+          recvObj.recent = recvPayload;
+          recvObj.content = Quiet.mergeab(recvObj.content, recvPayload);
           recvObj.target.textContent = recvObj.target.textContent + Quiet.ab2str(recvObj.content);
         }
         recvObj.successes++;
@@ -57,7 +58,8 @@ var TextReceiver = (function() {
             warningbox: receiver.querySelector('[data-quiet-receive-text-warning]'),
             successes: 0,
             failures: 0,
-            content: new ArrayBuffer(0)
+            content: new ArrayBuffer(0),
+            recent: new ArrayBuffer()
         };
         var onBtnClick = function(e) { return onClick(e, recvObj); };
         recvObj.btn.addEventListener('click', onBtnClick, false);
