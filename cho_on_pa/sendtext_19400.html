@@ -13,14 +13,27 @@
     <div class="hidden" data-quiet-profile-name="ultrasonic_19400"></div>
     <div class="wrapper">
       <header>
-        <h1>Send Text</h1>
+        <h1>Send 19400Hz</h1>
       </header>
       <section>
       <div class="hidden" data-quiet-warning></div>
       <div class="form-group">
-        <textarea autofocus="true" autocapitalize="none" autocomplete="off" spellcheck="off" class="form-control" style="resize:none" rows="5" data-quiet-text-input></textarea>
+        <select autofocus="true" class="form-control" name="" style="resize:none" data-quiet-select-input>
+          <option value="">選択してください</option>
+          <option value="秋葉原">秋葉原</option>
+          <option value="東京">東京</option>
+          <option value="品川">品川</option>
+        </select>
       </div>
-      <button type="button" class="btn btn-default" style="width:100%" data-quiet-send-button data-quiet-sending-text="Sending...">Send</button>
+      <div class="form-group">
+        <textarea autocapitalize="none" autocomplete="off" spellcheck="off" class="form-control" style="resize:none" rows="1" data-quiet-text-input></textarea>
+      </div>
+      <div class="">
+        <button type="button" class="btn btn-default" style="width:150px;height:80px" data-quiet-send-button data-quiet-sending-text="Sending...">Send</button>
+      </div>
+      <div class="">
+        <button type="button" class="btn btn-default" style="width:150px;height:80px" data-quiet-send-stop-button data-quiet-sending-text="Sending...">Stop</button>
+      </div>
       </section>
     </div>
   </body>
