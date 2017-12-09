@@ -15,7 +15,7 @@ var TextReceiver = (function() {
           var rcvStr = Quiet.ab2str(recvObj.content);
           var rcvData = rcvStr.split(",",3);
           recvObj.id = rcvData[0];
-          recvObj.sation.textContent = rcvData[1];
+          recvObj.station.textContent = rcvData[1];
           recvObj.hint.textContent = rcvData[2];
         }
         recvObj.successes++;
