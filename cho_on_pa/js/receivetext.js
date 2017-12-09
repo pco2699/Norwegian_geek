@@ -5,12 +5,13 @@ var TextReceiver = (function() {
         libfecPrefix: "/Norwegian_geek/cho_on_pa/js/"
     });
     var receivers;
-    var buffer;
+    var buffer = "";
 
     function onReceive(recvPayload, recvObj) {
         if(recvObj.content != recvPayload){
             recvObj.content = recvPayload;
             var rcvStr = Quiet.ab2str(recvObj.content);
+            console.log("index:" + rcvStr.search("."));
             if(rcvStr.search(".") < 0){
                 buffer = rcvStr;
                 return;
@@ -26,6 +27,8 @@ var TextReceiver = (function() {
 
                 recvObj.hint.textContent = rcvData[2];
                 console.log("hint:" + rcvData[2]);
+
+                buffer = "";
             }
         }
         recvObj.successes++;
