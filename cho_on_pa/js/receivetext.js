@@ -7,9 +7,10 @@ var TextReceiver = (function() {
     var receivers;
 
     function onReceive(recvPayload, recvObj) {
-        var index = Quiet.ab2str(recvPayload).search(".");
-        //console.log("index:" + index);
-        if(index === 0){
+        var seaechStr = Quiet.ab2str(recvPayload);
+        var index = seaechStr.search(/./);
+        console.log("index:" + index);
+        if(index > 5){
             recvObj.content = recvPayload;
             var rcvStr = Quiet.ab2str(recvObj.content);
             var rcvData = rcvStr.split(",",3);
@@ -17,9 +18,10 @@ var TextReceiver = (function() {
             console.log("id:" + rcvData[0]);
 
             recvObj.station.textContent = rcvData[1];
-            console.log("station:" + rcvData[0]);
+            console.log("station:" + rcvData[1]);
 
             recvObj.hint.textContent = rcvData[2];
+            console.log("hint:" + rcvData[2]);
         }else if(0 < index && index < 5 ){
             recvObj.content = Quiet.mergeab(recvObj.content,recvPayload);
             var rcvStr = Quiet.ab2str(recvPayload);
