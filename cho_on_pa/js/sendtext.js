@@ -6,6 +6,7 @@ var TextTransmitter = (function() {
     });
     var btn;
     var stp_btn;
+    var selectbox;
     var textbox;
     var warningbox;
     var transmit;
@@ -13,6 +14,14 @@ var TextTransmitter = (function() {
 
     function onTransmitFinish() {
         textbox.focus();
+        btn.addEventListener('click', onClick, false);
+        btn.disabled = false;
+        var originalText = btn.innerText;
+        btn.innerText = btn.getAttribute('data-quiet-sending-text');
+        btn.setAttribute('data-quiet-sending-text', originalText);
+    };
+    function onTransmitFinishHint() {
+        selectbox.focus();
         btn.addEventListener('click', onClick, false);
         btn.disabled = false;
         var originalText = btn.innerText;
@@ -28,14 +37,21 @@ var TextTransmitter = (function() {
         var originalText = e.target.innerText;
         e.target.innerText = e.target.getAttribute('data-quiet-sending-text');
         e.target.setAttribute('data-quiet-sending-text', originalText);
-        var payload = textbox.value;
-        if (payload === "") {
+        var hint = textbox.value;
+        if (hint === "") {
             onTransmitFinish();
             return;
         }
-        var id = new Date().getTime().toString(16);
+        var id = Math.floor(strong*Math.random()).toString(16);
+        var station = selectbox.value;
+        if (station === "") {
+            onTransmitFinishHint();
+            return;
+        }
         console.log(id);
-        payload += "," + id;
+        console.log(station);
+        console.log(hint);
+        var payload = id + "," + station + ","+ hint;
         console.log(payload);
         send_continue_flag = true;
         transmitAction(payload);
@@ -87,9 +103,10 @@ var TextTransmitter = (function() {
     };
 
     function onDOMLoad() {
-      console.log("commit 2:15");
+      console.log("commit 2:40");
         btn = document.querySelector('[data-quiet-send-button]');
         stp_btn = document.querySelector('[data-quiet-send-stop-button]');
+        selectbox = document.querySelector('[data-quiet-select-input]');
         textbox = document.querySelector('[data-quiet-text-input]');
         warningbox = document.querySelector('[data-quiet-warning]');
         Quiet.addReadyCallback(onQuietReady, onQuietFail);
