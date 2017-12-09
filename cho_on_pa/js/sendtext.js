@@ -34,12 +34,7 @@ var TextTransmitter = (function() {
         }
         console.log("111111111");
         send_continue_flag = true;
-        var send_continue =  setInterval(function(){
-          transmitAction(payload);
-          if(send_continue_flag == false){
-            clearInterval(send_continue);
-          }
-        }, 2000);
+        transmitAction(payload);
     };
 
     function sendStop() {
@@ -48,8 +43,14 @@ var TextTransmitter = (function() {
     }
 
     function transmitAction(payload) {
-      console.log("transmit_now");
-      transmit.transmit(Quiet.str2ab(payload));
+      var send_continue =  setInterval(function(){
+        console.log("transmit_now");
+        transmit.transmit(Quiet.str2ab(payload));
+        if(send_continue_flag == false){
+          clearInterval(send_continue);
+        }
+      }, 2000);
+      return true;
     }
 
     function onQuietReady() {
