@@ -7,7 +7,7 @@ window.onload = function(){
     Vue.component('navbar-header', {
         template: `
     <header class="header">
-      <p class="header-title">初回画面</p>
+        <img src="image/headerlogo.png" class="header-logo">
     </header>
         `
     });
