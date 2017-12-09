@@ -5,32 +5,45 @@ var TextReceiver = (function() {
         libfecPrefix: "/Norwegian_geek/cho_on_pa/js/"
     });
     var receivers;
+    var flg;
 
     function onReceive(recvPayload, recvObj) {
+        if(!recvObj.flg){
+          recvObj.flg = true;
+        }else{
+          return;
+        }
+
+        var checkId;
+        var checkStr = Quiet.ab2str(recvPayload);
+
+        if(checkStr.search(".") > 0 && 5 > checkStr.search(".")){
+            checkId = checkStr.split(".",1)[1].split(",",1);
+        }else{
+            checkId = checkStr.split(",",1);
+        }
+
+        if(recvObj.id === checkId[0] && recvObj.successes > 2){
+            return;
+        }else{
+          recvObj.successes = 0;
+        }
+
         recvObj.content = Quiet.mergeab(recvObj.content,recvPayload);
         var rcvStr = Quiet.ab2str(recvObj.content);
         var rcvData = rcvStr.split(",",3);
-        if(recvObj.successes < 3){
-            if(rcvData[0].length > 10){
-                var rcvDatastart = rcvData[0].split(".",1);
-                recvObj.id = rcvDatastart[1];
-                console.log("id:" + rcvDatastart[0]);
-            }else{
-              recvObj.id = rcvData[0];
-              console.log("id:" + rcvData[0]);
 
-            }
-            recvObj.station.textContent = rcvData[1];
-            console.log("station:" + rcvData[1]);
+        recvObj.id = checkId[0];
+        console.log("id:" + checkId[0]);
 
-            var rcvDataEnd = rcvData[2].split(".",1);
-            recvObj.hint.textContent = rcvDataEnd[0];
-            console.log("hint:" + rcvDataEnd[0]);
-            recvObj.successes++;
-        }else{
-            recvObj.successes = 0;
-          }
-        }
+        recvObj.station.textContent = rcvData[1];
+        console.log("station:" + rcvData[1]);
+
+        var rcvDataEnd = rcvData[2].split(".",1);
+        recvObj.hint.textContent = rcvDataEnd[0];
+        console.log("hint:" + rcvDataEnd[0]);
+        recvObj.successes++;
+        recvObj.flg = false;
         //var total = recvObj.failures + recvObj.successes
         //var ratio = recvObj.failures/total * 100;
         //recvObj.warningbox.textContent = "You may need to move the transmitter closer to the receiver and set the volume to 50%. Packet Loss: " + recvObj.failures + "/" + total + " (" + ratio.toFixed(0) + "%)";
@@ -74,7 +87,8 @@ var TextReceiver = (function() {
             warningbox: receiver.querySelector('[data-quiet-receive-text-warning]'),
             successes: 0,
             failures: 0,
-            content: new ArrayBuffer(0)
+            content: new ArrayBuffer(0),
+            flg: false
         };
         var onBtnClick = function(e) { return onClick(e, recvObj); };
         recvObj.btn.addEventListener('click', onBtnClick, false);
