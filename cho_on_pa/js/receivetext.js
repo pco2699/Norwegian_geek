@@ -7,7 +7,8 @@ var TextReceiver = (function() {
     var receivers;
 
     function onReceive(recvPayload, recvObj) {
-        var index = Quiet.ab2str(recvPayload).search(".");
+        var seaechStr = Quiet.ab2str(recvPayload);
+        var index = seaechStr.search(".");
         console.log("index:" + index);
         if(index === 0){
             recvObj.content = recvPayload;
