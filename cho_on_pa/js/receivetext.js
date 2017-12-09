@@ -7,14 +7,21 @@ var TextReceiver = (function() {
     var receivers;
 
     function onReceive(recvPayload, recvObj) {
+        recvObj.target.classList.remove('hidden');
         if(recvPayload != recvObj.content){
           recvObj.content = recvPayload;
-          recvObj.target.textContent = Quiet.ab2str(recvObj.content);
+          var rcvStr = Quiet.ab2str(recvObj.content);
+          var rcvData = rcvStr.split(",",3);
+          recvObj.id = rcvData[0];
+          recvObj.sation.textContent = rcvData[1];
+          recvObj.hint.textContent = rcvData[2];
         }
         recvObj.successes++;
         var total = recvObj.failures + recvObj.successes
         var ratio = recvObj.failures/total * 100;
-        console.log("成功:" + recvObj.successes);
+        console.log("id:" + rcvData[0]);
+        console.log("station:" + rcvData[1]);
+        console.log("hint:" + rcvData[2]);
         recvObj.warningbox.textContent = "You may need to move the transmitter closer to the receiver and set the volume to 50%. Packet Loss: " + recvObj.failures + "/" + total + " (" + ratio.toFixed(0) + "%)";
     };
 
@@ -54,7 +61,9 @@ var TextReceiver = (function() {
         var recvObj = {
             profilename: receiver.getAttribute('data-quiet-profile-name'),
             btn: receiver.querySelector('[data-quiet-receive-text-button]'),
-            target: receiver.querySelector('[data-quiet-receive-text-target]'),
+            id: "",
+            station: receiver.querySelector('[data-quiet-receive-text-station]'),
+            hint: receiver.querySelector('[data-quiet-receive-text-hint]'),
             warningbox: receiver.querySelector('[data-quiet-receive-text-warning]'),
             successes: 0,
             failures: 0,
