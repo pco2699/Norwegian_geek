@@ -7,7 +7,9 @@ var TextReceiver = (function() {
     var receivers;
 
     function onReceive(recvPayload, recvObj) {
-        recvObj.target.classList.remove('hidden');
+        recvObj.sation.classList.remove('hidden');
+        recvObj.hint.classList.remove('hidden');
+
         if(recvPayload != recvObj.content){
           recvObj.content = recvPayload;
           var rcvStr = Quiet.ab2str(recvObj.content);
@@ -40,11 +42,6 @@ var TextReceiver = (function() {
     };
 
     function onClick(e, recvObj) {
-        e.target.disabled = true;
-        var originalText = e.target.innerText;
-        e.target.innerText = e.target.getAttribute('data-quiet-receiving-text');
-        e.target.setAttribute('data-quiet-receiving-text', originalText);
-
         var receiverOnReceive = function(payload) { onReceive(payload, recvObj); };
         var receiverOnReceiverCreateFail = function(reason) { onReceiverCreateFail(reason, recvObj); };
         var receiverOnReceiveFail = function(num_fails) { onReceiveFail(num_fails, recvObj); };
@@ -53,8 +50,6 @@ var TextReceiver = (function() {
             onCreateFail: receiverOnReceiverCreateFail,
             onReceiveFail: receiverOnReceiveFail
         });
-
-        recvObj.target.classList.remove('hidden');
     }
 
     function setupReceiver(receiver) {
