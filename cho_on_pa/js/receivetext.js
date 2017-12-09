@@ -8,34 +8,24 @@ var TextReceiver = (function() {
     var flg;
 
     function onReceive(recvPayload, recvObj) {
-        if(!recvObj.flg){
-          recvObj.flg = true;
-        }else{
+        if(recvObj.flg){
           return;
-        }
-
-        var checkId;
-        var checkStr = Quiet.ab2str(recvPayload);
-
-        if(checkStr.search(".") > 0 && 5 > checkStr.search(".")){
-            checkId = checkStr.split(".",1)[1].split(",",1);
         }else{
-            checkId = checkStr.split(",",1);
+          recvObj.flg = true;
         }
-
-        if(recvObj.id === checkId[0] && recvObj.successes > 2){
-            return;
-        }else{
-          recvObj.successes = 0;
-        }
-
         recvObj.content = Quiet.mergeab(recvObj.content,recvPayload);
         var rcvStr = Quiet.ab2str(recvObj.content);
         var rcvData = rcvStr.split(",",3);
 
-        recvObj.id = checkId[0];
-        console.log("id:" + checkId[0]);
+        if(rcvData[0].length > 5){
+            var rcvDatastart = rcvData[0].split(".",1);
+            recvObj.id = rcvDatastart[1];
+            console.log("id:" + rcvDatastart[0]);
+        }else{
+            recvObj.id = rcvData[0];
+            console.log("id:" + rcvData[0]);
 
+        }
         recvObj.station.textContent = rcvData[1];
         console.log("station:" + rcvData[1]);
 
@@ -43,7 +33,7 @@ var TextReceiver = (function() {
         recvObj.hint.textContent = rcvDataEnd[0];
         console.log("hint:" + rcvDataEnd[0]);
         recvObj.successes++;
-        recvObj.flg = false;
+        recvObj.flg =false;
         //var total = recvObj.failures + recvObj.successes
         //var ratio = recvObj.failures/total * 100;
         //recvObj.warningbox.textContent = "You may need to move the transmitter closer to the receiver and set the volume to 50%. Packet Loss: " + recvObj.failures + "/" + total + " (" + ratio.toFixed(0) + "%)";
