@@ -7,7 +7,7 @@ var TextReceiver = (function() {
     var receivers;
 
     function onReceive(recvPayload, recvObj) {
-        recvObj.sation.classList.remove('hidden');
+        recvObj.station.classList.remove('hidden');
         recvObj.hint.classList.remove('hidden');
 
         if(recvPayload != recvObj.content){
