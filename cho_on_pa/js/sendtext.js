@@ -35,6 +35,7 @@ var TextTransmitter = (function() {
         console.log("111111111");
         send_continue_flag = true;
         transmitAction(payload);
+        console.log("cccccc");
         // transmit.transmit(Quiet.str2ab(payload));
     };
 
@@ -44,6 +45,7 @@ var TextTransmitter = (function() {
     }
 
     function transmitAction(payload) {
+      console.log("aaaaa");
       var send_continue = function(){
         console.log("transmit_now");
         transmit.transmit(Quiet.str2ab(payload));
@@ -52,6 +54,7 @@ var TextTransmitter = (function() {
         }
         setTimeout(send_continue, 2000);
       }
+      console.log("bbbbbb");
       //
       // var send_continue =  setInterval(function(){
       //   console.log("transmit_now");
@@ -79,7 +82,7 @@ var TextTransmitter = (function() {
     };
 
     function onDOMLoad() {
-      console.log("commit 1:05");
+      console.log("commit 1:11");
         btn = document.querySelector('[data-quiet-send-button]');
         stp_btn = document.querySelector('[data-quiet-send-stop-button]');
         textbox = document.querySelector('[data-quiet-text-input]');
