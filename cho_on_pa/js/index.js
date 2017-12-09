@@ -97,8 +97,10 @@ window.onload = function(){
       </div>
     </form>
     <!-- button -->
-    <div class="buttonzone">
-      <img src="image/transmit.png" alt="stop" class="sbutton" v-on:click="printFormData">
+    <div class="#">
+        <router-link to="/train">
+            <img src="image/transmit.png" alt="stop" class="tbutton" v-on:click="printFormData">
+        </router-link>
     </div>
 </div>
     `,
@@ -124,7 +126,7 @@ window.onload = function(){
 
      <div class="choice">
         <div class="post">
-            <router-link to="/transmit"><img src="image/post.png" alt="post" class="button01"></router-link>
+            <router-link to="/choice"><img src="image/post.png" alt="post" class="button01"></router-link>
         </div>
         <div class="getpost">
             <router-link to="/train"><img src="image/getpost.png" alt="getpost" class="button02"></router-link>
