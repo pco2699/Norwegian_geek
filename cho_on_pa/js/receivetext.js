@@ -7,13 +7,13 @@ var TextReceiver = (function() {
     var receivers;
 
     function onReceive(recvPayload, recvObj) {
-        if(recvPayload != recvObj.content){
-          recvObj.content = recvPayload;
-          var rcvStr = Quiet.ab2str(recvObj.content);
-          var rcvData = rcvStr.split(",",3);
-          recvObj.id = rcvData[0];
-          recvObj.station.textContent = rcvData[1];
-          recvObj.hint.textContent = rcvData[2];
+        recvObj.content = Quient.mergeab(recvObj.content,recvPayload);
+        var rcvStr = Quiet.ab2str(recvObj.content);
+        var rcvData = rcvStr.split(",",3);
+        if(recvObj.id != rcvData[0]){
+            recvObj.id = rcvData[0];
+            recvObj.station.textContent = rcvData[1];
+            recvObj.hint.textContent = rcvData[2];
         }
         recvObj.successes++;
         var total = recvObj.failures + recvObj.successes
