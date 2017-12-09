@@ -51,24 +51,25 @@
   background-color: white;
 }
 
-/* contents */
-.contents {
-    max-width: 360px;
-    min-height: 357px;
-    margin-bottom: 10px;
+.toplogo {
+  width:214px;
+  height:163px;
+  margin-top: 67px;
+  margin-left:73px;
 }
+
 
 /* buttons */
 img.button01 {
   width: 118px;
-  margin-top: 174px;
+  margin-top: 0px;
   margin-left: 38px;
   float: left;
 }
 
 img.button02 {
   width: 118px;
-  margin-top: 174px;
+  margin-top: 0px;
   margin-right: 38px;
   float: right;
 }
@@ -98,46 +99,12 @@ img.button02 {
   height: @height;
 }
 
-.wrap{
-  position: absolute;
-}
-
-.circ {
-  width: 150px;
-  height: 150px;
-  border-radius: 150px;
-  border: solid 1px;
-  position: absolute;
-
-  -webkit-animation-name: test;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-duration: 3s;
-  -webkit-animation-timing-function: linear;
-
-}
-
-.circ1 {
-  .circ;
-  -webkit-animation-delay: 0s;
-}
-
-.circ2 {
-  .circ;
-  -webkit-animation-delay: 0.1s;
-}
-
-.circ3 {
-  .circ;
-  -webkit-animation-delay: 0.2s;
-}
-
 .circle (@delay, @color) {
   width: 150px;
   height: 150px;
   border-radius: 150px;
-  border: solid 1px;
+  border: solid 1px @color;
   position: absolute;
-  border-color: @color;
 
   -webkit-animation-name: test;
   -webkit-animation-iteration-count: infinite;
@@ -158,14 +125,6 @@ img.button02 {
   z-index: 100;
 
   color: @color;
-}
-
-.moj{
-  position: absolute;
-
-  top: 44%;
-  left: 40%;
-  z-index: 100;
 }
 
 /* station01 */
@@ -277,20 +236,13 @@ img.button02 {
   background-color: white;
 }
 
-
-
-/* transmit main contents */
-
-
-.form-group {
-    text-align: center;
-    color: #E84351;
-    font-size: 20px; 
-    margin-left: 20px;
-    margin-right: 20px;
-    padding: 10px;
+.buttonzone {
+  width: 360px;
+  height: 200px;
+  position: relative;
+  margin-top: 320px;
+  border: 1px solid #888;
 }
-
 
 /* buttons */
 img.tbutton {
@@ -301,12 +253,4 @@ img.tbutton {
   bottom: 0;
   left: 0;
   margin: auto;
-}
-
-img.sbutton {
-  width: 118px;
-  display: block;
-  margin-bottom: 85px;
-  margin-left: auto;
-  margin-right: auto;
 }

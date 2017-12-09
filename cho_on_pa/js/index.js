@@ -107,10 +107,15 @@ window.onload = function(){
     ` };
 
     const Index = { template: `
+
+
      <section class="choice">
-        <div class="post">
-            <router-link to="/transmit"><img src="image/post.png" alt="post" class="button01"></router-link>
-        </div>
+       <div>
+         <img src="image/toplogo.png" class="toplogo">
+       </div>
+       <div class="post">
+         <router-link to="/transmit"><img src="image/post.png" alt="post" class="button01"></router-link>
+       </div>
         <div class="getpost">
             <router-link to="/train"><img src="image/getpost.png" alt="getpost" class="button02"></router-link>
         </div>
