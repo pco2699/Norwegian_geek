@@ -4,7 +4,7 @@ window.onload = function(){
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">LOGO</a>
+                <a class="navbar-brand" href="#">戻る</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
@@ -71,11 +71,28 @@ window.onload = function(){
 
     const Transmit = { template: `
 <div>
-    <p>ここにコンテンツがはいります</p>
-
+    <form style="margin-top:100px; margin-bottom:75px;">
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">降りる駅</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>秋葉原</option>
+              <option>神田</option>
+              <option>東京</option>
+              <option>有楽町</option>
+              <option>新橋</option>
+            </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">私のヒント</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+      </div>
+      <!--
+      <button type="submit" class="btn btn-default">Submit</button>
+      -->
+    </form>
     <!-- button -->
     <div class="buttonzone">
-      <router-link to="/train"><img src="image/stop.png" alt="stop" class="sbutton"></router-link>
+      <router-link to="/train"><img src="image/transmit.png" alt="stop" class="sbutton"></router-link>
     </div>
 </div>
     ` };
