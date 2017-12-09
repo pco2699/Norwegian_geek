@@ -137,11 +137,12 @@ window.onload = function(){
 
     const Transmit = { template: `
     <div>
-        <p>ここにコンテンツがはいります</p>
-
+        <div class="transmitnow">
+            <p>ここにコンテンツがはいります</p>
+        </div>
         <!-- button -->
-        <div class="buttonzone">
-            <router-link to="/train"><img src="image/transmit.png" alt="stop" class="sbutton"></router-link>
+        <div class="#">
+            <router-link to="/train"><img src="image/stop.png" alt="stop" class="sbutton"></router-link>
         </div>
     </div>
 `
@@ -152,6 +153,7 @@ window.onload = function(){
         { path: '/train', component: Train },
         { path: '/transmit', component: Transmit },
         { path: '/choice', component: Choice }
+        
     ];
     const router = new VueRouter({
         routes // routes: routes の短縮表記
