@@ -21,7 +21,7 @@ var TextTransmitter = (function() {
     };
 
     function onClick(e) {
-      console.log("111111111");
+      console.log("send onClick");
         e.target.removeEventListener(e.type, arguments.callee);
         e.target.disabled = true;
         var originalText = e.target.innerText;
@@ -44,7 +44,7 @@ var TextTransmitter = (function() {
     };
 
     function sendStop() {
-      console.log("stop");
+      console.log("sendStop");
       send_stop_flag = true;
     }
 
@@ -53,6 +53,7 @@ var TextTransmitter = (function() {
     }
 
     function onQuietReady() {
+      console.log("QuietReady");
         var profilename = document.querySelector('[data-quiet-profile-name]').getAttribute('data-quiet-profile-name');
         transmit = Quiet.transmitter({profile: profilename, onFinish: onTransmitFinish});
         btn.addEventListener('click', onClick, false);
@@ -67,6 +68,7 @@ var TextTransmitter = (function() {
     };
 
     function onDOMLoad() {
+      console.log("DOMLoad");
         btn = document.querySelector('[data-quiet-send-button]');
         stp_btn = document.querySelector('[data-quiet-send-stop-button]');
         textbox = document.querySelector('[data-quiet-text-input]');
