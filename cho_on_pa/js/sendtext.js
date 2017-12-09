@@ -39,7 +39,7 @@ var TextTransmitter = (function() {
           if(send_continue_flag == false){
             clearInterval(send_continue);
           }
-        }, 1000);
+        }, 2000);
     };
 
     function sendStop() {
@@ -68,7 +68,7 @@ var TextTransmitter = (function() {
     };
 
     function onDOMLoad() {
-      console.log("commit 23:40");
+      console.log("commit 23:44");
         btn = document.querySelector('[data-quiet-send-button]');
         stp_btn = document.querySelector('[data-quiet-send-stop-button]');
         textbox = document.querySelector('[data-quiet-text-input]');
