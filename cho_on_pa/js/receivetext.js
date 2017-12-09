@@ -10,8 +10,8 @@ var TextReceiver = (function() {
         recvObj.content = Quiet.mergeab(recvObj.content,recvPayload);
         var rcvStr = Quiet.ab2str(recvObj.content);
         var rcvData = rcvStr.split(",",3);
-        if(recvObj.successes < 3){
-            if(rcvData[0].length > 10){
+        if(recvObj.successes < 10){
+            if(rcvData[0].length > 5){
                 var rcvDatastart = rcvData[0].split(".",1);
                 recvObj.id = rcvDatastart[1];
                 console.log("id:" + rcvDatastart[0]);
