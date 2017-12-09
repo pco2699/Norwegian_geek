@@ -5,35 +5,26 @@ var TextReceiver = (function() {
         libfecPrefix: "/Norwegian_geek/cho_on_pa/js/"
     });
     var receivers;
-    var flg;
 
     function onReceive(recvPayload, recvObj) {
-        if(recvObj.flg){
-          return;
-        }else{
-          recvObj.flg = true;
-        }
-        recvObj.content = Quiet.mergeab(recvObj.content,recvPayload);
-        var rcvStr = Quiet.ab2str(recvObj.content);
-        var rcvData = rcvStr.split(",",3);
-
-        if(rcvData[0].length > 5){
-            var rcvDatastart = rcvData[0].split(".",1);
-            recvObj.id = rcvDatastart[1];
-            console.log("id:" + rcvDatastart[0]);
-        }else{
+        if(Quiet.ab2str(recvPayload).search(".") < 0){
+            recvObj.content = recvPayload;
+            var rcvStr = Quiet.ab2str(recvObj.content);
+            var rcvData = rcvStr.split(",",3);
             recvObj.id = rcvData[0];
             console.log("id:" + rcvData[0]);
 
-        }
-        recvObj.station.textContent = rcvData[1];
-        console.log("station:" + rcvData[1]);
+            recvObj.station.textContent = rcvData[1];
+            console.log("station:" + rcvData[0]);
 
-        var rcvDataEnd = rcvData[2].split(".",1);
-        recvObj.hint.textContent = rcvDataEnd[0];
-        console.log("hint:" + rcvDataEnd[0]);
+            recvObj.hint.textContent = rcvData[2];
+        }else{
+            recvObj.content = Quiet.mergeab(recvObj.content,recvPayload);
+            var rcvStr = Quiet.ab2str(recvPayload);
+            var rcvData = rcvStr.split(".",1);
+            recvObj.hint.textContent += rcvData[0];
+        }
         recvObj.successes++;
-        recvObj.flg =false;
         //var total = recvObj.failures + recvObj.successes
         //var ratio = recvObj.failures/total * 100;
         //recvObj.warningbox.textContent = "You may need to move the transmitter closer to the receiver and set the volume to 50%. Packet Loss: " + recvObj.failures + "/" + total + " (" + ratio.toFixed(0) + "%)";
@@ -77,8 +68,7 @@ var TextReceiver = (function() {
             warningbox: receiver.querySelector('[data-quiet-receive-text-warning]'),
             successes: 0,
             failures: 0,
-            content: new ArrayBuffer(0),
-            flg: false
+            content: new ArrayBuffer(0)
         };
         var onBtnClick = function(e) { return onClick(e, recvObj); };
         recvObj.btn.addEventListener('click', onBtnClick, false);
