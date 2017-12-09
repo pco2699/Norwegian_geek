@@ -30,6 +30,8 @@ var TextTransmitter = (function() {
             return;
         }
         transmit.transmit(Quiet.str2ab(payload));
+        transmit.transmit(Quiet.str2ab(payload));
+        transmit.transmit(Quiet.str2ab(payload));
     };
 
     function onQuietReady() {
