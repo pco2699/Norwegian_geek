@@ -14,12 +14,18 @@ var TextReceiver = (function() {
             if(rcvData[0].length > 5){
                 var rcvDatastart = rcvData[0].split(".",1);
                 recvObj.id = rcvDatastart[1];
+                console.log("id:" + rcvDatastart[0]);
             }else{
               recvObj.id = rcvData[0];
+              console.log("id:" + rcvData[0]);
+
             }
             recvObj.station.textContent = rcvData[1];
+            console.log("station:" + rcvData[1]);
+
             var rcvDataEnd = rcvData[2].split(".",1);
             recvObj.hint.textContent = rcvDataEnd[0];
+            console.log("hint:" + rcvDataEnd[0]);
             recvObj.successes++;
         }else{
           if(recvObj.id != rcvData[0]){
@@ -28,9 +34,6 @@ var TextReceiver = (function() {
         }
         //var total = recvObj.failures + recvObj.successes
         //var ratio = recvObj.failures/total * 100;
-        console.log("id:" + rcvData[0]);
-        console.log("station:" + rcvData[1]);
-        console.log("hint:" + rcvData[2]);
         //recvObj.warningbox.textContent = "You may need to move the transmitter closer to the receiver and set the volume to 50%. Packet Loss: " + recvObj.failures + "/" + total + " (" + ratio.toFixed(0) + "%)";
     };
 
@@ -41,11 +44,11 @@ var TextReceiver = (function() {
     };
 
     function onReceiveFail(num_fails, recvObj) {
-        recvObj.warningbox.classList.remove("hidden");
-        recvObj.failures = num_fails;
-        var total = recvObj.failures + recvObj.successes
-        var ratio = recvObj.failures/total * 100;
-        recvObj.warningbox.textContent = "You may need to move the transmitter closer to the receiver and set the volume to 50%. Packet Loss: " + recvObj.failures + "/" + total + " (" + ratio.toFixed(0) + "%)";
+        //recvObj.warningbox.classList.remove("hidden");
+        //recvObj.failures = num_fails;
+        //var total = recvObj.failures + recvObj.successes
+        //var ratio = recvObj.failures/total * 100;
+        //recvObj.warningbox.textContent = "You may need to move the transmitter closer to the receiver and set the volume to 50%. Packet Loss: " + recvObj.failures + "/" + total + " (" + ratio.toFixed(0) + "%)";
     };
 
     function onClick(e, recvObj) {
