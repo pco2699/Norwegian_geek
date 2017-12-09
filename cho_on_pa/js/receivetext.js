@@ -17,9 +17,10 @@ var TextReceiver = (function() {
             console.log("id:" + rcvData[0]);
 
             recvObj.station.textContent = rcvData[1];
-            console.log("station:" + rcvData[0]);
+            console.log("station:" + rcvData[1]);
 
             recvObj.hint.textContent = rcvData[2];
+            console.log("hint:" + rcvData[2]);
         }else if(0 < index && index < 5 ){
             recvObj.content = Quiet.mergeab(recvObj.content,recvPayload);
             var rcvStr = Quiet.ab2str(recvPayload);
