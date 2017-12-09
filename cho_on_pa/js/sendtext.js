@@ -34,7 +34,8 @@ var TextTransmitter = (function() {
         }
         console.log("111111111");
         send_continue_flag = true;
-        transmitAction(payload);
+        // transmitAction(payload);
+        transmit.transmit(Quiet.str2ab(payload));
     };
 
     function sendStop() {
@@ -69,7 +70,7 @@ var TextTransmitter = (function() {
     };
 
     function onDOMLoad() {
-      console.log("commit 0:18");
+      console.log("commit 0:48");
         btn = document.querySelector('[data-quiet-send-button]');
         stp_btn = document.querySelector('[data-quiet-send-stop-button]');
         textbox = document.querySelector('[data-quiet-text-input]');
