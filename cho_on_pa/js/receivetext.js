@@ -1,8 +1,8 @@
 var TextReceiver = (function() {
     Quiet.init({
-        profilesPrefix: "/js/",
-        memoryInitializerPrefix: "/js/",
-        libfecPrefix: "/js/"
+        profilesPrefix: "/Norwegian_geek/cho_on_pa/js/",
+        memoryInitializerPrefix: "/Norwegian_geek/cho_on_pa/js/",
+        libfecPrefix: "/Norwegian_geek/cho_on_pa/js/"
     });
     var target;
     var content = new ArrayBuffer(0);
