@@ -69,7 +69,7 @@ var TextTransmitter = (function() {
         var payload = id + "," + station + ","+ hint + ".";
         console.log(payload);
         send_continue_flag = true;
-        console.log((Quiet.str2ab(payload));
+        console.log((Quiet.str2ab(payload)));
         transmitAction(payload);
         console.log("cccccc");
         // transmit.transmit(Quiet.str2ab(payload));
@@ -110,7 +110,7 @@ var TextTransmitter = (function() {
     };
 
     function onDOMLoad() {
-      console.log("commit 7:33");
+      console.log("commit 7:37");
         btn = document.querySelector('[data-quiet-send-button]');
         stp_btn = document.querySelector('[data-quiet-send-stop-button]');
         selectbox = document.querySelector('[data-quiet-select-input]');
