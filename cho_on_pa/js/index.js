@@ -178,30 +178,27 @@ window.onload = function(){
 <div>
      <!-- ロゴの幅はlogozoneで調整してください -->
      <div class="logozone">
-        <img src="image/toplogo.png" class="toplogo">
+        <img src="image/logo.png" class="toplogo">
      </div>
 
-     <div class="choice">
-        <div class="post">
-            <router-link to="/choice"><img src="image/post.png" alt="post" class="button01"></router-link>
-        </div>
-        <div class="getpost">
-            <router-link to="/train"><img src="image/getpost.png" alt="getpost" class="button02"></router-link>
-        </div>
-    </div>
+     <div class="logozone-bottom">
+        <router-link to="/choice"><img src="image/post.png" alt="post" class="button01"></router-link>
+        <router-link to="/train"><img src="image/getpost.png" alt="getpost" class="button02"></router-link>
+     </div>
+
 </div>
     `};
 
     const Transmit = { template: `
-    <div>
-        <div class="transmitnow">
-            <p>ここにコンテンツがはいります</p>
-        </div>
-        <!-- button -->
-        <div class="#">
-            <router-link to="/train"><img src="image/stop.png" alt="stop" class="sbutton"></router-link>
-        </div>
+<div>
+    <div class="transmit-content">
+        <circle_org color="#FF426E" top="100px" left="105px" height="150px" width="150px" message=""></circle_org>
     </div>
+    <div>   
+        <!-- button -->
+        <router-link to="/"><img src="image/stop.png" alt="stop" class="sbutton"></router-link>
+    </div>
+</div>
 `
 };
 
