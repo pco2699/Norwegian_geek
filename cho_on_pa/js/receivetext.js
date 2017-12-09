@@ -11,7 +11,7 @@ var TextReceiver = (function() {
         var rcvStr = Quiet.ab2str(recvObj.content);
         var rcvData = rcvStr.split(",",3);
         if(recvObj.successes < 3){
-            if(rcvData[0].length > 5){
+            if(rcvData[0].length > 10){
                 var rcvDatastart = rcvData[0].split(".",1);
                 recvObj.id = rcvDatastart[1];
                 console.log("id:" + rcvDatastart[0]);
@@ -28,7 +28,6 @@ var TextReceiver = (function() {
             console.log("hint:" + rcvDataEnd[0]);
             recvObj.successes++;
         }else{
-          if(recvObj.id != rcvData[0]){
             recvObj.successes = 0;
           }
         }
