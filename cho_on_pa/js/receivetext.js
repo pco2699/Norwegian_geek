@@ -8,29 +8,19 @@ var TextReceiver = (function() {
 
     function onReceive(recvPayload, recvObj) {
         if(recvObj.content != recvPayload){
-          recvObj.content = recvPayload;
-          var searchStr = Quiet.ab2str(recvObj.content);
-          var index = searchStr.search(".");
-          console.log("index:" + index);
-          if(index >= 5){
-              var rcvData = rcvStr.split(",",3);
-              recvObj.id = rcvData[0];
-              console.log("id:" + rcvData[0]);
+            recvObj.content = recvPayload;
+            var searchStr = Quiet.ab2str(recvObj.content);
+            var index = searchStr.search(".");
+            console.log(searchStr);
+            var rcvData = rcvStr.split(",",3);
+            recvObj.id = rcvData[0];
+            console.log("id:" + rcvData[0]);
 
-              recvObj.station.textContent = rcvData[1];
-              console.log("station:" + rcvData[1]);
+            recvObj.station.textContent = rcvData[1];
+            console.log("station:" + rcvData[1]);
 
-              recvObj.hint.textContent = rcvData[2];
-              console.log("hint:" + rcvData[2]);
-          }else if(0 < index && index < 5 ){
-              recvObj.content = Quiet.mergeab(recvObj.content,recvPayload);
-              var rcvStr = Quiet.ab2str(rrecvObj.content);
-              var rcvData = rcvStr.split(".",1);
-              recvObj.hint.textContent += rcvData[0];
-              console.log("hint:" + recvObj.hint.textContent);
-          }else{
-              //none
-          }
+            recvObj.hint.textContent = rcvData[2];
+            console.log("hint:" + rcvData[2]);
         }
         recvObj.successes++;
         //var total = recvObj.failures + recvObj.successes
