@@ -9,9 +9,8 @@ var TextReceiver = (function() {
     function onReceive(recvPayload, recvObj) {
         if(recvObj.content != recvPayload){
             recvObj.content = recvPayload;
-            var searchStr = Quiet.ab2str(recvObj.content);
-            var index = searchStr.search(".");
-            console.log(searchStr);
+            var rcvStr = Quiet.ab2str(recvObj.content);
+            
             var rcvData = rcvStr.split(",",3);
             recvObj.id = rcvData[0];
             console.log("id:" + rcvData[0]);
