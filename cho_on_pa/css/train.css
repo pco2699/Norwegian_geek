@@ -19,40 +19,46 @@
 }
 
 /* 駅名のCSS*/
-
-.sta {
-  font-size: 24px;
-}
-
-.chara {
-  font-size: 14px;
-}
-
-/* 波紋 */
 @-webkit-keyframes test {
     0% {
         opacity: 1;
         -webkit-transform: scale(0);
     }
     100% {
-        opacity: 0.5;
+        opacity: 0.1;
         -webkit-transform: scale(1);
     }
 }
 
-.circle1 {
+/* station01 */
+.wrapper1 {
+    position: absolute;
+    top: 120px;
+    left: 210px;
     width: 150px;
     height: 150px;
-    border-radius: 150px;
-    border:solid 1px black;
-
-    -webkit-animation-name: test;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-duration: 5s;
-    -webkit-animation-timing-function: ease-out;
 }
 
-.circle2 {
+.circle11 {
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+    border:solid 1px black;
+    position: absolute;
+
+    -webkit-animation-name: test;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+
+    top: 0;
+    left: 0;
+    z-index: -100;
+
+    border-color: #52BFCD;
+}
+
+.circle21 {
     width: 150px;
     height: 150px;
     border-radius: 150px;
@@ -61,12 +67,75 @@
 
     -webkit-animation-name: test;
     -webkit-animation-iteration-count: infinite;
-    -webkit-animation-duration: 5s;
-    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 0.1s;
+
+    top: 0;
+    left: 0;
+    z-index: -100;
+
+    border-color: #52BFCD;
+}
+
+.circle31 {
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+    border:solid 1px black;
+
+    -webkit-animation-name: test;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
     -webkit-animation-delay: 0.2s;
+
+    top: 0;
+    left: 0;
+    z-index: -100;
+
+    border-color: #52BFCD;
 }
 
-.circle3 {
+.moji1 {
+    position: absolute;
+
+    top: 65px;
+    left: 53px;
+    z-index: 100;
+
+    color: #52BFCD;
+}
+
+/* station02 */
+.wrapper2 {
+    position: absolute;
+    top: 200px;
+    left: 40px;
+    width: 150px;
+    height: 150px;
+}
+
+.circle12 {
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+    border:solid 1px black;
+    position: absolute;
+
+    -webkit-animation-name: test;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+
+    top: 0;
+    left: 0;
+    z-index: -100;
+
+    border-color: #E84351;
+}
+
+.circle22 {
     width: 150px;
     height: 150px;
     border-radius: 150px;
@@ -75,36 +144,197 @@
 
     -webkit-animation-name: test;
     -webkit-animation-iteration-count: infinite;
-    -webkit-animation-duration: 5s;
-    -webkit-animation-timing-function: ease-out;
-    -webkit-animation-delay: 0.4s;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 0.1s;
+
+    top: 0;
+    left: 0;
+    z-index: -100;
+
+    border-color: #E84351;
 }
 
+.circle32 {
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+    border:solid 1px black;
 
-/* 下記はまだ未調整*/
+    -webkit-animation-name: test;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 0.2s;
 
-.station01{
-  color: #00bfff;
-  margin-top: 60px;
-  margin-bottom: 60px
+    top: 0;
+    left: 0;
+    z-index: -100;
+
+    border-color: #E84351;
 }
 
-.station02{
-  color: #9400d3;
-  margin-top: 60px;
-  margin-bottom: 60px;
+.moji2 {
+    position: absolute;
+
+    top: 65px;
+    left: 53px;
+    z-index: 100;
+
+    color: #E84351;
 }
 
-.station03{
-  color: #ffd700;
-  margin-top: 60px;
-  margin-bottom: 60px;
+/* station03 */
+.wrapper3 {
+    position: absolute;
+    top: 290px;
+    left: 180px;
+    width: 150px;
+    height: 150px;
 }
 
+.circle13 {
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+    border:solid 1px black;
+    position: absolute;
+
+    -webkit-animation-name: test;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+
+    top: 0;
+    left: 0;
+    z-index: -100;
+
+    border-color: #FED849;
+}
+
+.circle23 {
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+    border:solid 1px black;
 
 
-.station04{
-  color: #00fa9a;
-  margin-top: 60px;
-  margin-bottom: 60px;
+    -webkit-animation-name: test;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 0.1s;
+
+    top: 0;
+    left: 0;
+    z-index: -100;
+
+    border-color: #FED849;
+}
+
+.circle33 {
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+    border:solid 1px black;
+
+    -webkit-animation-name: test;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 0.2s;
+
+    top: 0;
+    left: 0;
+    z-index: -100;
+
+    border-color: #FED849;
+}
+
+.moji3 {
+    position: absolute;
+
+    top: 65px;
+    left: 53px;
+    z-index: 100;
+
+    color: #FED849;
+}
+
+/* station04 */
+.wrapper4 {
+    position: absolute;
+    top: 420px;
+    left: 125px;
+    width: 150px;
+    height: 150px;
+}
+
+.circle14 {
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+    border:solid 1px black;
+    position: absolute;
+
+    -webkit-animation-name: test;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+
+    top: 0;
+    left: 0;
+    z-index: -100;
+
+    border-color: #C3D957;
+}
+
+.circle24 {
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+    border:solid 1px black;
+
+
+    -webkit-animation-name: test;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 0.1s;
+
+    top: 0;
+    left: 0;
+    z-index: -100;
+
+    border-color: #C3D957;
+}
+
+.circle34 {
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+    border:solid 1px black;
+
+    -webkit-animation-name: test;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 0.2s;
+
+    top: 0;
+    left: 0;
+    z-index: -100;
+
+    border-color: #C3D957;
+}
+
+.moji4 {
+    position: absolute;
+
+    top: 65px;
+    left: 53px;
+    z-index: 100;
+
+    font-size: 24px;
+    color: #C3D957;
 }

@@ -5,17 +5,12 @@
   max-width: 360px;
 }
 
-
-.navbar {
-  background-color: #f5f5f5;
-  font-size: 17px;
-}
-
 .title {
-  color: #696969;
+  text-align: center;
+  padding: 18px;
   font-size: 17px;
+  color: #696969;
 }
-
 
 .body {
   max-width: 360px;
