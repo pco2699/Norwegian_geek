@@ -34,9 +34,12 @@ var TextTransmitter = (function() {
         }
         console.log("111111111");
         send_continue_flag = true;
-        while(send_continue_flag){
-          setTimeout(transmitAction(payload), 1000);
-        }
+        var send_continue =  setInterval(function(){
+          transmitAction(payload);
+          if(send_continue_flag == false){
+            clearInterval(send_continue);
+          }
+        }, 1000);
     };
 
     function sendStop() {
@@ -65,7 +68,7 @@ var TextTransmitter = (function() {
     };
 
     function onDOMLoad() {
-      console.log("commit 23:28");
+      console.log("commit 23:40");
         btn = document.querySelector('[data-quiet-send-button]');
         stp_btn = document.querySelector('[data-quiet-send-stop-button]');
         textbox = document.querySelector('[data-quiet-text-input]');
