@@ -7,12 +7,10 @@ var TextReceiver = (function() {
     var receivers;
 
     function onReceive(recvPayload, recvObj) {
-        var searchStr = Quiet.ab2str(recvPayload);
-        var index = searchStr.search(".");
-        console.log("index:" + index);
-        if(index >= 5){
+        if(recvObj.content != recvPayload){
             recvObj.content = recvPayload;
             var rcvStr = Quiet.ab2str(recvObj.content);
+            
             var rcvData = rcvStr.split(",",3);
             recvObj.id = rcvData[0];
             console.log("id:" + rcvData[0]);
@@ -22,14 +20,6 @@ var TextReceiver = (function() {
 
             recvObj.hint.textContent = rcvData[2];
             console.log("hint:" + rcvData[2]);
-        }else if(0 < index && index < 5 ){
-            recvObj.content = Quiet.mergeab(recvObj.content,recvPayload);
-            var rcvStr = Quiet.ab2str(recvPayload);
-            var rcvData = rcvStr.split(".",1);
-            recvObj.hint.textContent += rcvData[0];
-            console.log("hint:" + recvObj.hint.textContent);
-        }else{
-            //none
         }
         recvObj.successes++;
         //var total = recvObj.failures + recvObj.successes
