@@ -18,12 +18,9 @@ var TextReceiver = (function() {
             }else{
                 buffer += rcvStr;
 
-                var rcvData = buffer.split(",",3);
+                var rcvData = buffer.split(",",2);
                 recvObj.id = rcvData[0];
                 console.log("id:" + rcvData[0]);
-
-                recvObj.station.textContent = rcvData[1];
-                console.log("station:" + rcvData[1]);
 
                 recvObj.hint.textContent = rcvData[2];
                 console.log("hint:" + rcvData[2]);
@@ -32,6 +29,26 @@ var TextReceiver = (function() {
             }
         }
         recvObj.successes++;
+
+        switch(recvObj.profilename){
+            case "ultrasonic_19000":
+                recvObj.station.textContent = "秋葉原";
+                break;
+            case  "ultrasonic_19200":
+                recvObj.station.textContent = "神田";
+                break;
+            case "ultrasonic_19400":
+                recvObj.station.textContent = "東京";
+                break;
+            case "ultrasonic_19600":
+                recvObj.station.textContent = "有楽町";
+                break;
+            case "ultrasonic_19800":
+                recvObj.station.textContent = "新橋";
+                break;
+            default:
+                break;
+        }
         //var total = recvObj.failures + recvObj.successes
         //var ratio = recvObj.failures/total * 100;
         //recvObj.warningbox.textContent = "You may need to move the transmitter closer to the receiver and set the volume to 50%. Packet Loss: " + recvObj.failures + "/" + total + " (" + ratio.toFixed(0) + "%)";
