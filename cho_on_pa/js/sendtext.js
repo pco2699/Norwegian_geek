@@ -21,6 +21,7 @@ var TextTransmitter = (function() {
     };
 
     function onClick(e) {
+      sendStop();
       console.log("send onClick");
         e.target.removeEventListener(e.type, arguments.callee);
         e.target.disabled = true;
@@ -34,7 +35,8 @@ var TextTransmitter = (function() {
         }
         var id = new Date().getTime().toString(16);
         console.log(id);
-        console.log("111111111");
+        payload += "," + id;
+        console.log(payload);
         send_continue_flag = true;
         transmitAction(payload);
         console.log("cccccc");
@@ -85,7 +87,7 @@ var TextTransmitter = (function() {
     };
 
     function onDOMLoad() {
-      console.log("commit 2:08");
+      console.log("commit 2:15");
         btn = document.querySelector('[data-quiet-send-button]');
         stp_btn = document.querySelector('[data-quiet-send-stop-button]');
         textbox = document.querySelector('[data-quiet-text-input]');
