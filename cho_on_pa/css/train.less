@@ -106,12 +106,46 @@ img.button02 {
   height: @height;
 }
 
+.wrap{
+  position: absolute;
+}
+
+.circ {
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  border: solid 1px;
+  position: absolute;
+
+  -webkit-animation-name: test;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-timing-function: linear;
+
+}
+
+.circ1 {
+  .circ;
+  -webkit-animation-delay: 0s;
+}
+
+.circ2 {
+  .circ;
+  -webkit-animation-delay: 0.1s;
+}
+
+.circ3 {
+  .circ;
+  -webkit-animation-delay: 0.2s;
+}
+
 .circle (@delay, @color) {
   width: 150px;
   height: 150px;
   border-radius: 150px;
-  border: solid 1px @color;
+  border: solid 1px;
   position: absolute;
+  border-color: @color;
 
   -webkit-animation-name: test;
   -webkit-animation-iteration-count: infinite;
@@ -132,6 +166,14 @@ img.button02 {
   z-index: 100;
 
   color: @color;
+}
+
+.moj{
+  position: absolute;
+
+  top: 44%;
+  left: 40%;
+  z-index: 100;
 }
 
 /* station01 */
