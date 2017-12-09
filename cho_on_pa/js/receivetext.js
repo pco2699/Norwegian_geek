@@ -10,18 +10,22 @@ var TextReceiver = (function() {
         recvObj.content = Quient.mergeab(recvObj.content,recvPayload);
         var rcvStr = Quiet.ab2str(recvObj.content);
         var rcvData = rcvStr.split(",",3);
-        if(recvObj.id != rcvData[0]){
+        if(recvObj.successes < 3){
             recvObj.id = rcvData[0];
             recvObj.station.textContent = rcvData[1];
             recvObj.hint.textContent = rcvData[2];
+            recvObj.successes++;
+        }else{
+          if(recvObj.id != rcvData[0]){
+            recvObj.successes = 0;
+          }
         }
-        recvObj.successes++;
-        var total = recvObj.failures + recvObj.successes
-        var ratio = recvObj.failures/total * 100;
+        //var total = recvObj.failures + recvObj.successes
+        //var ratio = recvObj.failures/total * 100;
         console.log("id:" + rcvData[0]);
         console.log("station:" + rcvData[1]);
         console.log("hint:" + rcvData[2]);
-        recvObj.warningbox.textContent = "You may need to move the transmitter closer to the receiver and set the volume to 50%. Packet Loss: " + recvObj.failures + "/" + total + " (" + ratio.toFixed(0) + "%)";
+        //recvObj.warningbox.textContent = "You may need to move the transmitter closer to the receiver and set the volume to 50%. Packet Loss: " + recvObj.failures + "/" + total + " (" + ratio.toFixed(0) + "%)";
     };
 
     function onReceiverCreateFail(reason, recvObj) {
