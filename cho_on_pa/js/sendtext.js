@@ -21,6 +21,7 @@ var TextTransmitter = (function() {
     };
 
     function onClick(e) {
+      console.log("111111111");
         e.target.removeEventListener(e.type, arguments.callee);
         e.target.disabled = true;
         var originalText = e.target.innerText;
@@ -31,9 +32,10 @@ var TextTransmitter = (function() {
             onTransmitFinish();
             return;
         }
+        console.log("111111111");
         send_stop_flag = false;
         while(true){
-          transmit.transmit(Quiet.str2ab(payload));
+          setTimeout(transmitAction(payload), 1000);
           console.log("test");
           if(send_stop_flag==true){
             break;
@@ -44,6 +46,10 @@ var TextTransmitter = (function() {
     function sendStop() {
       console.log("stop");
       send_stop_flag = true;
+    }
+
+    function transmitAction(payload) {
+      transmit.transmit(Quiet.str2ab(payload));
     }
 
     function onQuietReady() {
