@@ -9,7 +9,7 @@ var TextTransmitter = (function() {
     var textbox;
     var warningbox;
     var transmit;
-    var send_stop_flag;
+    var send_continue_flag;
 
     function onTransmitFinish() {
         textbox.focus();
@@ -33,23 +33,20 @@ var TextTransmitter = (function() {
             return;
         }
         console.log("111111111");
-        send_stop_flag = false;
-        while(true){
+        send_continue_flag = true;
+        while(send_continue_flag){
           setTimeout(transmitAction(payload), 1000);
         }
     };
 
     function sendStop() {
       console.log("sendStop");
-      send_stop_flag = true;
+      send_continue_flag = false;
     }
 
     function transmitAction(payload) {
+      console.log("transmit_now");
       transmit.transmit(Quiet.str2ab(payload));
-      console.log("test");
-      if(send_stop_flag==true){
-        break;
-      }
     }
 
     function onQuietReady() {
