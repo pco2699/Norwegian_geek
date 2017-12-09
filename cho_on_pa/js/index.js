@@ -6,19 +6,9 @@ window.onload = function(){
 
     Vue.component('navbar-header', {
         template: `
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">戻る</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <header class="header">
+      <p class="header-title">初回画面</p>
+    </header>
         `
     });
 
