@@ -12,6 +12,21 @@ var TextTransmitter = (function() {
     var transmit;
     var send_continue_flag;
 
+    // function removeHidden(){
+    //   recvObj.station.classList.remove('hidden');
+    //   recvObj.hint.classList.remove('hidden');
+    //   clearTimeout(timer);
+    //   timer = setTimeout(function(){
+    //     recvObj.station.classList.add('hidden');
+    //     recvObj.hint.classList.add('hidden');
+    //   },10000);
+    // }
+    //
+    // function onReceive(recvPayload, recvObj) {
+    //
+    //   removeHidden();
+
+
     function onTransmitFinish() {
         textbox.focus();
         btn.addEventListener('click', onClick, false);
@@ -72,19 +87,10 @@ var TextTransmitter = (function() {
         if(send_continue_flag == false){
           return;
         }
-        setTimeout(send_continue, 2000);
+        setTimeout(send_continue, 4000);
       }
       send_continue();
       console.log("bbbbbb");
-      //
-      // var send_continue =  setInterval(function(){
-      //   console.log("transmit_now");
-      //   transmit.transmit(Quiet.str2ab(payload));
-      //   if(send_continue_flag == false){
-      //     clearInterval(send_continue);
-      //   }
-      // }, 2000);
-      // return true;
     }
 
     function onQuietReady() {
@@ -103,7 +109,7 @@ var TextTransmitter = (function() {
     };
 
     function onDOMLoad() {
-      console.log("commit 3:07");
+      console.log("commit 4:26");
         btn = document.querySelector('[data-quiet-send-button]');
         stp_btn = document.querySelector('[data-quiet-send-stop-button]');
         selectbox = document.querySelector('[data-quiet-select-input]');
