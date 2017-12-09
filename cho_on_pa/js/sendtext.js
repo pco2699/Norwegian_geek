@@ -42,7 +42,7 @@ var TextTransmitter = (function() {
             onTransmitFinish();
             return;
         }
-        var id = Math.floor(100000*Math.random()).toString(16);
+        var id = new Date().getTime().toString(16);
         var station = selectbox.value;
         if (station === "") {
             onTransmitFinishHint();
@@ -103,7 +103,7 @@ var TextTransmitter = (function() {
     };
 
     function onDOMLoad() {
-      console.log("commit 2:48");
+      console.log("commit 2:51");
         btn = document.querySelector('[data-quiet-send-button]');
         stp_btn = document.querySelector('[data-quiet-send-stop-button]');
         selectbox = document.querySelector('[data-quiet-select-input]');
