@@ -9,7 +9,7 @@ var TextReceiver = (function() {
     function onReceive(recvPayload, recvObj) {
         if(recvPayload != recvObj.content){
           recvObj.content = recvPayload;
-          recvObj.target.textContent = Quiet.ab2str(recvObj.content);
+          recvObj.target.textContent = recvObj.target.textContent + Quiet.ab2str(recvObj.content);
         }
         recvObj.successes++;
         var total = recvObj.failures + recvObj.successes
