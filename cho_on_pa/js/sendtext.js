@@ -51,7 +51,7 @@ var TextTransmitter = (function() {
         console.log(id);
         console.log(station);
         console.log(hint);
-        var payload = id + "," + station + ","+ hint;
+        var payload = id + "," + station + ","+ hint + ".";
         console.log(payload);
         send_continue_flag = true;
         transmitAction(payload);
