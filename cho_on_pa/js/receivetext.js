@@ -73,7 +73,7 @@ var TextReceiver = (function() {
             setupReceiver(receivers[i]);
         }
         var receiveBtn = document.getElementById("receive-btn");
-        receiveBtn.addEventListener('click', onAllBtnClick, false);
+        receiveBtn.addEventListener('click', onRcvBtnClick, false);
     };
 
     function onQuietFail(reason) {
@@ -88,7 +88,10 @@ var TextReceiver = (function() {
         Quiet.addReadyCallback(onQuietReady, onQuietFail);
     };
 
-    function onAllBtnClick(){
+    function onRcvBtnClick(){
+        var receiveBtn = document.getElementById("receive-btn");
+        receiveBtn.innerText = "Listening...";
+
         document.getElementById("19000btn").click();
         document.getElementById("19200btn").click();
         document.getElementById("19400btn").click();
