@@ -6,6 +6,7 @@ var TextTransmitter = (function() {
     });
     var btn;
     var stp_btn;
+    var selectbox;
     var textbox;
     var warningbox;
     var transmit;
@@ -19,23 +20,43 @@ var TextTransmitter = (function() {
         btn.innerText = btn.getAttribute('data-quiet-sending-text');
         btn.setAttribute('data-quiet-sending-text', originalText);
     };
+    function onTransmitFinishHint() {
+        selectbox.focus();
+        btn.addEventListener('click', onClick, false);
+        btn.disabled = false;
+        var originalText = btn.innerText;
+        btn.innerText = btn.getAttribute('data-quiet-sending-text');
+        btn.setAttribute('data-quiet-sending-text', originalText);
+    };
 
     function onClick(e) {
+      sendStop();
       console.log("send onClick");
         e.target.removeEventListener(e.type, arguments.callee);
         e.target.disabled = true;
         var originalText = e.target.innerText;
         e.target.innerText = e.target.getAttribute('data-quiet-sending-text');
         e.target.setAttribute('data-quiet-sending-text', originalText);
-        var payload = textbox.value;
-        if (payload === "") {
+        var hint = textbox.value;
+        if (hint === "") {
             onTransmitFinish();
             return;
         }
-        console.log("111111111");
+        var id = new Date().getTime().toString(16).substr(7, 10) + Math.floor(10*Math.random()).toString(16);
+        var station = selectbox.value;
+        if (station === "") {
+            onTransmitFinishHint();
+            return;
+        }
+        console.log(id);
+        console.log(station);
+        console.log(hint);
+        var payload = id + "," + station + ","+ hint;
+        console.log(payload);
         send_continue_flag = true;
-        // transmitAction(payload);
-        transmit.transmit(Quiet.str2ab(payload));
+        transmitAction(payload);
+        console.log("cccccc");
+        // transmit.transmit(Quiet.str2ab(payload));
     };
 
     function sendStop() {
@@ -44,14 +65,26 @@ var TextTransmitter = (function() {
     }
 
     function transmitAction(payload) {
-      var send_continue =  setInterval(function(){
+      console.log("aaaaa");
+      var send_continue = function(){
         console.log("transmit_now");
         transmit.transmit(Quiet.str2ab(payload));
         if(send_continue_flag == false){
-          clearInterval(send_continue);
+          return;
         }
-      }, 2000);
-      return true;
+        setTimeout(send_continue, 2000);
+      }
+      send_continue();
+      console.log("bbbbbb");
+      //
+      // var send_continue =  setInterval(function(){
+      //   console.log("transmit_now");
+      //   transmit.transmit(Quiet.str2ab(payload));
+      //   if(send_continue_flag == false){
+      //     clearInterval(send_continue);
+      //   }
+      // }, 2000);
+      // return true;
     }
 
     function onQuietReady() {
@@ -70,9 +103,10 @@ var TextTransmitter = (function() {
     };
 
     function onDOMLoad() {
-      console.log("commit 0:48");
+      console.log("commit 3:00");
         btn = document.querySelector('[data-quiet-send-button]');
         stp_btn = document.querySelector('[data-quiet-send-stop-button]');
+        selectbox = document.querySelector('[data-quiet-select-input]');
         textbox = document.querySelector('[data-quiet-text-input]');
         warningbox = document.querySelector('[data-quiet-warning]');
         Quiet.addReadyCallback(onQuietReady, onQuietFail);
