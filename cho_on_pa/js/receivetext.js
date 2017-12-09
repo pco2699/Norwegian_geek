@@ -7,11 +7,14 @@ var TextReceiver = (function() {
     var receivers;
 
     function onReceive(recvPayload, recvObj) {
-        recvObj.content = Quiet.mergeab(recvObj.content, recvPayload);
-        recvObj.target.textContent = Quiet.ab2str(recvObj.content);
+        if(recvPayload != recvObj.content){
+          recvObj.content = recvPayload;
+          recvObj.target.textContent = Quiet.ab2str(recvObj.content);
+        }
         recvObj.successes++;
         var total = recvObj.failures + recvObj.successes
         var ratio = recvObj.failures/total * 100;
+        console.log("成功:" + recvObj.successes);
         recvObj.warningbox.textContent = "You may need to move the transmitter closer to the receiver and set the volume to 50%. Packet Loss: " + recvObj.failures + "/" + total + " (" + ratio.toFixed(0) + "%)";
     };
 
@@ -65,6 +68,8 @@ var TextReceiver = (function() {
         for (var i = 0; i < receivers.length; i++) {
             setupReceiver(receivers[i]);
         }
+        var allStartBtn = document.getElementById("all-btn");
+        allStartBtn.addEventListener('click', onAllBtnClick, false);
     };
 
     function onQuietFail(reason) {
@@ -78,6 +83,14 @@ var TextReceiver = (function() {
         receivers = document.querySelectorAll('[data-quiet-receive-text]');
         Quiet.addReadyCallback(onQuietReady, onQuietFail);
     };
+
+    function onAllBtnClick(){
+        document.getElementById("19000btn").click();
+        document.getElementById("19200btn").click();
+        document.getElementById("19400btn").click();
+        document.getElementById("19600btn").click();
+        document.getElementById("19800btn").click();
+    }
 
     document.addEventListener("DOMContentLoaded", onDOMLoad);
 })();
