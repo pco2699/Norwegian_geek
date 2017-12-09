@@ -54,6 +54,7 @@ var TextTransmitter = (function() {
         }
         setTimeout(send_continue, 2000);
       }
+      send_continue();
       console.log("bbbbbb");
       //
       // var send_continue =  setInterval(function(){
@@ -82,7 +83,7 @@ var TextTransmitter = (function() {
     };
 
     function onDOMLoad() {
-      console.log("commit 1:11");
+      console.log("commit 1:14");
         btn = document.querySelector('[data-quiet-send-button]');
         stp_btn = document.querySelector('[data-quiet-send-stop-button]');
         textbox = document.querySelector('[data-quiet-text-input]');
