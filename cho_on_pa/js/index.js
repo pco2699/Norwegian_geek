@@ -124,21 +124,11 @@ window.onload = function(){
         <img src="image/logo.png" class="toplogo">
      </div>
 
-<<<<<<< HEAD
      <div class="logozone-bottom">
         <router-link to="/transmit"><img src="image/post.png" alt="post" class="button01"></router-link>
         <router-link to="/train"><img src="image/getpost.png" alt="getpost" class="button02"></router-link>
      </div>
-=======
-     <div class="choice">
-        <div class="post">
-            <router-link to="/choice"><img src="image/post.png" alt="post" class="button01"></router-link>
-        </div>
-        <div class="getpost">
-            <router-link to="/train"><img src="image/getpost.png" alt="getpost" class="button02"></router-link>
-        </div>
-    </div>
->>>>>>> 2da2366f4f326fd3c1da489abecb5c3e897d0887
+
 </div>
     `};
 
