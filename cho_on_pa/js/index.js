@@ -3,15 +3,15 @@ window.onload = function(){
 
     /*Quiet.jsの初期化*/
     Quiet.init({
-        profilesPrefix: "./js/",
-        memoryInitializerPrefix: "./js/",
-        libfecPrefix: "./js/"
+        profilesPrefix: "/Norwegian_geek/cho_on_pa/js/",
+        memoryInitializerPrefix: "/Norwegian_geek/cho_on_pa/js/",
+        libfecPrefix: "/Norwegian_geek/cho_on_pa/js/"
     });
     Quiet.addReadyCallback(onQuietReady, onQuietFail);
 
     function onQuietReady() {
         let profilename = 'ultrasonic_19600';
-        transmit = Quiet.transmitter({profile: profilename, onFinish: onTransmitFinish});
+        const transmit = Quiet.transmitter({profile: profilename, onFinish: onTransmitFinish});
     };
 
     function sendStart(hint, station) {
@@ -38,7 +38,6 @@ window.onload = function(){
         };
         send_continue();
     }
-
 
     function onTransmitFinish() {
     };
@@ -170,7 +169,9 @@ window.onload = function(){
             }
         },
     methods: {
-        sendStart: sendStart(this.hint, this.station)
+        sendStart: function () {
+            sendStart(this.hint, this.station);
+        }
     }
     };
 
@@ -196,10 +197,15 @@ window.onload = function(){
     </div>
     <div>   
         <!-- button -->
-        <router-link to="/"><img src="image/stop.png" alt="stop" class="sbutton"></router-link>
+        <router-link to="/"><img src="image/stop.png" alt="stop" class="sbutton" v-on:click="sendStop"></router-link>
     </div>
 </div>
-`
+`,
+        methods: {
+            sendStop: function(){
+                sendStop();
+            }
+        }
 };
 
     const routes = [
