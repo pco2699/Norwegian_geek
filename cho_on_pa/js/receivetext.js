@@ -68,8 +68,8 @@ var TextReceiver = (function() {
         for (var i = 0; i < receivers.length; i++) {
             setupReceiver(receivers[i]);
         }
-        var allStartBtn = document.getElementById("all-btn");
-        allStartBtn.addEventListener('click', onAllBtnClick, false);
+        var receiveBtn = document.getElementById("receive-btn");
+        receiveBtn.addEventListener('click', onAllBtnClick, false);
     };
 
     function onQuietFail(reason) {
