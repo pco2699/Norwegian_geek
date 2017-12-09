@@ -7,9 +7,6 @@ var TextReceiver = (function() {
     var receivers;
 
     function onReceive(recvPayload, recvObj) {
-        recvObj.station.classList.remove('hidden');
-        recvObj.hint.classList.remove('hidden');
-
         if(recvPayload != recvObj.content){
           recvObj.content = recvPayload;
           var rcvStr = Quiet.ab2str(recvObj.content);
@@ -50,6 +47,9 @@ var TextReceiver = (function() {
             onCreateFail: receiverOnReceiverCreateFail,
             onReceiveFail: receiverOnReceiveFail
         });
+
+        recvObj.station.classList.remove('hidden');
+        recvObj.hint.classList.remove('hidden');
     }
 
     function setupReceiver(receiver) {
