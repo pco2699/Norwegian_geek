@@ -11,9 +11,14 @@ var TextReceiver = (function() {
         var rcvStr = Quiet.ab2str(recvObj.content);
         var rcvData = rcvStr.split(",",3);
         if(recvObj.successes < 3){
-            recvObj.id = rcvData[0];
+            if(rcvData[0].length > 5){
+                var rcvDatastart = rcvData[0].split(".",1);
+                recvObj.id = rcvDatastart[1];
+            }else{
+              recvObj.id = rcvData[0];
+            }
             recvObj.station.textContent = rcvData[1];
-            var rcvDataEnd = rcvData[2].split(";",1);
+            var rcvDataEnd = rcvData[2].split(".",1);
             recvObj.hint.textContent = rcvDataEnd[0];
             recvObj.successes++;
         }else{
