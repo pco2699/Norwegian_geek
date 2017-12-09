@@ -36,10 +36,6 @@ var TextTransmitter = (function() {
         send_stop_flag = false;
         while(true){
           setTimeout(transmitAction(payload), 1000);
-          console.log("test");
-          if(send_stop_flag==true){
-            break;
-          }
         }
     };
 
@@ -50,6 +46,10 @@ var TextTransmitter = (function() {
 
     function transmitAction(payload) {
       transmit.transmit(Quiet.str2ab(payload));
+      console.log("test");
+      if(send_stop_flag==true){
+        break;
+      }
     }
 
     function onQuietReady() {
