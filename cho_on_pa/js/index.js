@@ -125,7 +125,7 @@ window.onload = function(){
      </div>
 
      <div class="logozone-bottom">
-        <router-link to="/transmit"><img src="image/post.png" alt="post" class="button01"></router-link>
+        <router-link to="/choice"><img src="image/post.png" alt="post" class="button01"></router-link>
         <router-link to="/train"><img src="image/getpost.png" alt="getpost" class="button02"></router-link>
      </div>
 
