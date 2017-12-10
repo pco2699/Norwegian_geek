@@ -32,10 +32,10 @@
 /* 波紋消す */
 @-webkit-keyframes vanish {
   0% {
-    opacity: 1;
+    visibility: visible;
   }
   100% {
-    opacity: 0;
+    visibility: hidden;
   }
 }
 
@@ -314,6 +314,7 @@ img.sbutton {
 
 .wrap{
   position: absolute;
+  visibility: hidden;
 
   -webkit-transition: visibility 10s ease-out;
   transition: visibility 10s ease-out;
