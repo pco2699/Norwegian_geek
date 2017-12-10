@@ -157,7 +157,8 @@ window.onload = function () {
             left: '180px',
             width: '150px',
             height: '150px',
-            message: '東京'
+            message: '東京',
+            hint: '黄色コート'
         }
     ];
 
