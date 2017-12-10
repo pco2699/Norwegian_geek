@@ -142,7 +142,7 @@ window.onload = function () {
         {
             color: '#52BFCD',
             top: '120px',
-            left: '210px',
+            left: '180px',
             width: '150px',
             height: '150px',
             message: '東京'
@@ -152,8 +152,8 @@ window.onload = function () {
     function addNewData(message, data) {
         let add_data = {
             color: color_code[getRand(color_code.length - 1, 0)],
-            top: getRand(MAX_HEIGHT, 20) + 'px',
-            left: getRand(MAX_WIDTH, 10) + 'px',
+            top: getRand(MAX_HEIGHT-75, 20+75) + 'px',
+            left: getRand(MAX_WIDTH-75, 10+75) + 'px',
             width: getRand(150, 100) + 'px',
             height: getRand(150, 100) + 'px',
             message: message
@@ -210,7 +210,7 @@ window.onload = function () {
             <img src="image/transmit.png" alt="stop" class="tbutton" v-on:click="sendStart">
         </router-link>
     </div>
-    <script 
+    <script
 </div>
     `,
         data: function () {
@@ -249,7 +249,7 @@ window.onload = function () {
     <div class="transmit-content">
         <circle_org color="#FF426E" top="100px" left="105px" height="150px" width="150px" message=""></circle_org>
     </div>
-    <div>   
+    <div>
         <!-- button -->
         <router-link to="/"><img src="image/stop.png" alt="stop" class="sbutton" v-on:click="sendStop"></router-link>
     </div>
