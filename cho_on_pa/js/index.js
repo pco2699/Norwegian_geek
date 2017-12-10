@@ -63,7 +63,7 @@ window.onload = function () {
 
                     var hint = rcvData[1];
                     console.log("hint:" + rcvData[1]);
-                    addNewData(station + "<br>" + hint, receive_data);
+                    addNewData(station + "→" + hint, receive_data);
                 },
                 onCreateFail: function () {
                     console.log("onCreateFail");
