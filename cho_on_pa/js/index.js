@@ -63,7 +63,7 @@ window.onload = function () {
 
                     var hint = rcvData[1];
                     console.log("hint:" + rcvData[1]);
-                    addNewData(station + "¥n" + hint, receive_data);
+                    addNewData(station + "<br>" + hint, receive_data);
                 },
                 onCreateFail: function () {
                     console.log("onCreateFail");
@@ -222,7 +222,7 @@ window.onload = function () {
             <img src="image/transmit.png" alt="stop" class="tbutton" v-on:click="sendStart">
         </router-link>
     </div>
-    <script 
+    <script
 </div>
     `,
         data: function () {
@@ -266,7 +266,7 @@ window.onload = function () {
     <div class="transmit-content">
         <circle_org color="#FF426E" top="100px" left="105px" height="150px" width="150px" message=""></circle_org>
     </div>
-    <div>   
+    <div>
         <!-- button -->
         <router-link to="/"><img src="image/stop.png" alt="stop" class="sbutton" v-on:click="sendStop"></router-link>
     </div>
