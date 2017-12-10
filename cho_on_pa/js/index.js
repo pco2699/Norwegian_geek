@@ -63,7 +63,7 @@ window.onload = function () {
 
                     var hint = rcvData[1];
                     console.log("hint:" + rcvData[1]);
-                    addNewData(station + "→" + hint, receive_data);
+                    addNewData(station, hint, receive_data);
                 },
                 onCreateFail: function () {
                     console.log("onCreateFail");
@@ -140,12 +140,12 @@ window.onload = function () {
           </div>
         </div>
       <div class="moj" v-bind:style="{color: color}">
-          {{ message }}
+          {{ message }}<br>{{ hint }
       </div>
       </div>
 </div>
        `,
-        props: ['color', 'top', 'left', 'width', 'height', 'message']
+        props: ['color', 'top', 'left', 'width', 'height', 'message', 'hint']
     });
 
     let color_code = ['#52BFCD', '#FED849', '#E84351', '#C3D957', '#FFA017'];
@@ -161,14 +161,15 @@ window.onload = function () {
         }
     ];
 
-    function addNewData(message, data) {
+    function addNewData(message, hint, data) {
         let add_data = {
             color: color_code[getRand(color_code.length - 1, 0)],
             top: getRand(MAX_HEIGHT-75, 20+75) + 'px',
             left: getRand(MAX_WIDTH-75, 10+75) + 'px',
             width: getRand(150, 100) + 'px',
             height: getRand(150, 100) + 'px',
-            message: message
+            message: message,
+            hint: hint
         };
         data.push(add_data);
         return data;
@@ -192,7 +193,7 @@ window.onload = function () {
         },
         methods: {
             addNewData: function () {
-                receive_data = addNewData("東京", receive_data);
+                receive_data = addNewData("東京", "赤い傘", receive_data);
             }
         }
     };
