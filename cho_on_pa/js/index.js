@@ -155,8 +155,8 @@ window.onload = function () {
     function addNewData(message, hint, data) {
         let add_data = {
             color: color_code[getRand(color_code.length - 1, 0)],
-            top: getRand(MAX_HEIGHT-75, 20+75) + 'px',
-            left: getRand(MAX_WIDTH-75, 10+75) + 'px',
+            top: getRand(400, 57) + 'px',
+            left: getRand(210, 0) + 'px',
             width: getRand(150, 100) + 'px',
             height: getRand(150, 100) + 'px',
             message: message,
