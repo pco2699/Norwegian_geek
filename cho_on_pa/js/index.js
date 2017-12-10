@@ -150,17 +150,7 @@ window.onload = function () {
 
     let color_code = ['#52BFCD', '#FED849', '#E84351', '#C3D957', '#FFA017'];
 
-    let receive_data = [
-        {
-            color: '#52BFCD',
-            top: '120px',
-            left: '180px',
-            width: '150px',
-            height: '150px',
-            message: '東京',
-            hint: '黄色コート'
-        }
-    ];
+    let receive_data = [];
 
     function addNewData(message, hint, data) {
         let add_data = {
