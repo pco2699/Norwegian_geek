@@ -1,17 +1,83 @@
-window.onload = function(){
+window.onload = function () {
     let send_continue_flag = false;
     let transmit;
+    let receivers;
+
+    let recv_station_arr = [
+        {
+            sonic: "ultrasonic_19000",
+            station: "秋葉原",
+        },
+        {
+            sonic: "ultrasonic_19200",
+            station: "神田",
+        },
+        {
+            sonic: "ultrasonic_19400",
+            station: "東京",
+        },
+        {
+            sonic: "ultrasonic_19600",
+            station: "有楽町",
+        },
+        {
+            sonic: "ultrasonic_19800",
+            station: "新橋",
+        }
+    ];
 
     function onQuietReady() {
         let profilename = 'ultrasonic_19600';
         transmit = Quiet.transmitter({profile: profilename, onFinish: onTransmitFinish});
+
     };
+
+    function onReceive(recvPayload, recvObj) {
+        if (recvObj.content != recvPayload) {
+            recvObj.content = recvPayload;
+            var rcvStr = Quiet.ab2str(recvObj.content);
+
+            var rcvData = rcvStr.split(",", 3);
+            recvObj.id = rcvData[0];
+            console.log("id:" + rcvData[0]);
+
+            recvObj.station.textContent = rcvData[1];
+            console.log("station:" + rcvData[1]);
+
+            recvObj.hint.textContent = rcvData[2];
+            console.log("hint:" + rcvData[2]);
+        }
+        recvObj.successes++;
+    };
+
+
+    function recvStart() {
+        recv_station_arr.forEach(function (item) {
+            Quiet.receiver({
+                profile: item.sonic,
+                onReceive: onReceive,
+                onCreateFail: null,
+                onReceiveFail: null
+            });
+        });
+
+    };
+
 
     function sendStart(hint, station) {
         sendStop();
-        var id = new Date().getTime().toString(16).substr(7, 10) + Math.floor(10*Math.random()).toString(16);
+        let result = recv_station_arr.filter(function (item) {
+            if (item.station === station) {
+                return item;
+            }
+        });
+        console.log(result[0]);
+        let profilename = result[0].sonic;
+        transmit = Quiet.transmitter({profile: profilename, onFinish: onTransmitFinish});
 
-        var payload = id + "," + station + ","+ hint + ".";
+        var id = new Date().getTime().toString(16).substr(7, 10) + Math.floor(10 * Math.random()).toString(16);
+
+        var payload = id + "," + station + "," + hint + ".";
         send_continue_flag = true;
         transmitAction(payload);
     };
@@ -21,10 +87,10 @@ window.onload = function(){
     }
 
     function transmitAction(payload) {
-        var send_continue = function(){
+        var send_continue = function () {
             console.log("transmit_now");
             transmit.transmit(Quiet.str2ab(payload));
-            if(send_continue_flag == false){
+            if (send_continue_flag == false) {
                 return;
             }
             setTimeout(send_continue, 2000);
@@ -98,27 +164,29 @@ window.onload = function(){
 
     /*乱数を作る関数*/
     function getRand(max, min) {
-        return Math.floor( Math.random() * (max + 1 - min) ) + min
+        return Math.floor(Math.random() * (max + 1 - min)) + min
     }
 
-    const Train = { template: `
+    const Train = {
+        template: `
 <div>
     <div v-for="item in items">
         <circle_org v-bind="item"></circle_org>
     </div>
     <button v-on:click="addNewData">Add</button>
 </div>`,
-    data: function () {
-        return { items: receive_data};
-    },
+        data: function () {
+            return {items: receive_data};
+        },
         methods: {
-          addNewData: function() {
-              receive_data = addNewData("東京", receive_data);
-          }
+            addNewData: function () {
+                receive_data = addNewData("東京", receive_data);
+            }
         }
     };
 
-    const Choice = { template: `
+    const Choice = {
+        template: `
 <div>
     <form style="margin-top:100px; margin-bottom:75px;">
       <div class="form-group">
@@ -135,15 +203,6 @@ window.onload = function(){
         <label for="exampleFormControlTextarea1">私のヒント</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" v-model="hint"></textarea>
       </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">周波数帯</label>
-            <select class="form-control" id="exampleFormControlSelect1" v-model="wave">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-            </select>
-      </div>
     </form>
     <!-- button -->
     <div class="#">
@@ -157,18 +216,18 @@ window.onload = function(){
         data: function () {
             return {
                 station: "",
-                hint: "",
-                wave: ""
+                hint: ""
             }
         },
-    methods: {
-        sendStart: function () {
-            sendStart(this.hint, this.station);
+        methods: {
+            sendStart: function () {
+                sendStart(this.hint, this.station);
+            }
         }
-    }
     };
 
-    const Index = { template: `
+    const Index = {
+        template: `
 <div>
      <!-- ロゴの幅はlogozoneで調整してください -->
      <div class="logozone">
@@ -181,9 +240,11 @@ window.onload = function(){
      </div>
 
 </div>
-    `};
+    `
+    };
 
-    const Transmit = { template: `
+    const Transmit = {
+        template: `
 <div>
     <div class="transmit-content">
         <circle_org color="#FF426E" top="100px" left="105px" height="150px" width="150px" message=""></circle_org>
@@ -195,18 +256,18 @@ window.onload = function(){
 </div>
 `,
         methods: {
-            sendStop: function(){
+            sendStop: function () {
                 sendStop();
             }
         }
-};
+    };
 
     const routes = [
-     /*   { path: '/', component: Index}, */
-        { path: '/train', component: Train },
-        { path: '/transmit', component: Transmit },
-        { path: '/choice', component: Choice }
-        
+        {path: '/', component: Index},
+        {path: '/train', component: Train},
+        {path: '/transmit', component: Transmit},
+        {path: '/choice', component: Choice}
+
     ];
     const router = new VueRouter({
         routes // routes: routes の短縮表記
@@ -223,6 +284,5 @@ window.onload = function(){
         memoryInitializerPrefix: "/Norwegian_geek/cho_on_pa/js/",
         libfecPrefix: "/Norwegian_geek/cho_on_pa/js/"
     });
-
 
 };
