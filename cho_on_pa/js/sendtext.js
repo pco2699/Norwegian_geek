@@ -66,7 +66,7 @@ var TextTransmitter = (function() {
         console.log(id);
         console.log(station);
         console.log(hint);
-        var payload = id + "," + station + ","+ hint + ".";
+        var payload = id + "," + hint + ".";
         console.log(payload);
         send_continue_flag = true;
         console.log((Quiet.str2ab(payload)));

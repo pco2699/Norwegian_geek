@@ -33,8 +33,6 @@ window.onload = function () {
     };
 
     function onReceive(recvPayload, recvObj) {
-        if (recvObj.content != recvPayload) {
-            recvObj.content = recvPayload;
             var rcvStr = Quiet.ab2str(recvObj.content);
 
             var rcvData = rcvStr.split(",", 3);
@@ -46,21 +44,35 @@ window.onload = function () {
 
             recvObj.hint.textContent = rcvData[2];
             console.log("hint:" + rcvData[2]);
-        }
-        recvObj.successes++;
     };
 
 
     function recvStart() {
+        console.log("recvStart");
         recv_station_arr.forEach(function (item) {
             Quiet.receiver({
                 profile: item.sonic,
-                onReceive: onReceive,
-                onCreateFail: null,
-                onReceiveFail: null
+                onReceive: function (payload) {
+                    console.log("hogeeeee");
+                    var station = item.station;
+                    var rcvStr = Quiet.ab2str(payload);
+
+                    var rcvData = rcvStr.split(",", 2);
+                    var id = rcvData[0];
+                    console.log("id:" + rcvData[0]);
+
+                    var hint = rcvData[1];
+                    console.log("hint:" + rcvData[1]);
+                    addNewData(station + "→" + hint, receive_data);
+                },
+                onCreateFail: function () {
+                    console.log("onCreateFail");
+                },
+                onReceiveFail: function () {
+                    console.log("onRecieveFail");
+                }
             });
         });
-
     };
 
 
@@ -77,7 +89,7 @@ window.onload = function () {
 
         var id = new Date().getTime().toString(16).substr(7, 10) + Math.floor(10 * Math.random()).toString(16);
 
-        var payload = id + "," + station + "," + hint + ".";
+        var payload = id + "," + hint + ".";
         send_continue_flag = true;
         transmitAction(payload);
     };
@@ -236,11 +248,16 @@ window.onload = function () {
 
      <div class="logozone-bottom">
         <router-link to="/choice"><img src="image/post.png" alt="post" class="button01"></router-link>
-        <router-link to="/train"><img src="image/getpost.png" alt="getpost" class="button02"></router-link>
+        <router-link to="/train"><img src="image/getpost.png" alt="getpost" class="button02" v-on:click="recvStart"></router-link>
      </div>
 
 </div>
-    `
+    `,
+        methods: {
+            recvStart: function () {
+                recvStart()
+            }
+        }
     };
 
     const Transmit = {
