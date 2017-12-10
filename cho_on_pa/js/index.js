@@ -140,7 +140,7 @@ window.onload = function () {
           </div>
         </div>
       <div class="moj" v-bind:style="{color: color}">
-          {{ message }}<br>{{ hint }
+          {{ message }}<br>{{ hint }}
       </div>
       </div>
 </div>
