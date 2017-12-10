@@ -315,10 +315,13 @@ img.sbutton {
 .wrap{
   position: absolute;
 
-  -webkit-animation-name: vanish;
-  -webkit-animation-iteration-count: 1;
-  -webkit-animation-duration: 10s;
-  -webkit-animation-timing-function: cubic-bezier(0.85, 0.1, 0.95, 0.9);
+  -webkit-transition: visibility 10s ease-out;
+  transition: visibility 10s ease-out;
+
+  // -webkit-animation-name: vanish;
+  // -webkit-animation-iteration-count: 1;
+  // -webkit-animation-duration: 10s;
+  // -webkit-animation-timing-function: cubic-bezier(0.85, 0.1, 0.95, 0.9);
 }
 
 .circ {
