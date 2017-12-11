@@ -29,6 +29,17 @@
   }
 }
 
+/* 波紋消す */
+@-webkit-keyframes vanish {
+  0% {
+    visibility: visible;
+  }
+  100% {
+    visibility: hidden;
+  }
+}
+
+
 .header {
   height: 57px;
   background-color: #f5f5f5;
@@ -303,6 +314,12 @@ img.sbutton {
 
 .wrap{
   position: absolute;
+
+
+  // -webkit-animation-name: vanish;
+  // -webkit-animation-iteration-count: 1;
+  // -webkit-animation-duration: 10s;
+  // -webkit-animation-timing-function: cubic-bezier(0.85, 0.1, 0.95, 0.9);
 }
 
 .circ {
